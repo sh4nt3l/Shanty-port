@@ -251,18 +251,20 @@
     }
 
     /* ========== BANNER TOPO (estilo Mazul) ========== */
-    .top-banner {
+  .top-banner {
   margin: 6px 0 20px;
-  border-radius: 26px;
+  border-radius: 0;
   overflow: hidden;
   position: relative;
-  min-height: 200px;        /* altura do banner */
+  min-height: 200px;
   display: flex;
-  align-items: flex-end;    /* posição vertical do botão */
-  justify-content: flex-end; /* posição horizontal do botão */
-  padding: 24px;
-  background: linear-gradient(120deg, var(--lavender-deep), var(--rose-deep));
-  box-shadow: 0 14px 44px rgba(168, 147, 214, 0.4);
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+  background: transparent;
+  box-shadow: none;
+  flex-direction: column;
+  text-align: center;
 }
 
 .top-banner-img {
@@ -982,11 +984,12 @@
     </nav>
 
     <!-- ===== BANNER TOPO (estilo Mazul) ===== -->
+<!-- ===== BANNER TOPO ===== -->
 <div class="top-banner" style="display:flex; align-items:center; justify-content:center; padding:20px; background: var(--glass);">
-  <img 
-    src="https://www.image2url.com/r2/default/images/1787352450176-8a830d45-14b6-41f5-ad7e-a27dda9ba7d2.jpg" 
-    alt="Yezzy Card" 
-    style="max-width:100%; height:auto; border-radius:16px; box-shadow:0 8px 30px rgba(0,0,0,0.15);"
+  <img
+    src="https://www.image2url.com/r2/default/images/1787352450176-8a830d45-14b6-41f5-ad7e-a27dda9ba7d2.jpg"
+    alt="Yezzy Card"
+    style="max-width:100%; height:auto;"
   />
 </div>
 
