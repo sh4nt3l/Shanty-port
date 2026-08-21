@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yezzy · Portfólio</title>
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cstyle%3E@keyframes spin%7Bfrom%7Btransform:rotate(0deg)%7Dto%7Btransform:rotate(360deg)%7D%7D.gear%7Btransform-origin:50%25 50%25;animation:spin 2.5s linear infinite%7D%3C/style%3E%3Ccircle cx='50' cy='50' r='48' fill='%23cc3333'/%3E%3Ctext class='gear' x='50%25' y='76%25' font-size='64' text-anchor='middle' fill='%23ffffff'%3E%E2%9A%99%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23b7d3ec'/%3E%3Ctext x='50%25' y='64%25' font-size='50' text-anchor='middle'%3E☁️%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
 
@@ -19,76 +23,152 @@
       scroll-behavior: smooth;
     }
 
+    /* ========== PALETA · CÉU / LAVANDA / ROSA ========== */
+    :root {
+      --sky-1: #e8f1fb;
+      --sky-2: #cfe3f5;
+      --sky-3: #b7d3ec;
+      --lavender: #cdbfe8;
+      --lavender-deep: #a893d6;
+      --rose: #dba9c6;
+      --rose-deep: #c184a8;
+      --ink: #40506a;
+      --ink-soft: #78889f;
+      --ink-faint: #a3aec2;
+      --glass: rgba(255, 255, 255, 0.55);
+      --glass-strong: rgba(255, 255, 255, 0.72);
+      --glass-border: rgba(255, 255, 255, 0.65);
+    }
+
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: #0d0808;
-      color: #f0e0e0;
-      line-height: 1.6;
+      font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 45%, var(--sky-3) 100%);
+      color: var(--ink);
+      line-height: 1.7;
       overflow-x: hidden;
       min-height: 100vh;
     }
 
-    .gears-bg {
+    h1, h2, h3, .logo {
+      font-family: 'Fraunces', serif;
+    }
+
+    /* ========== CÉU · NUVENS E ESTRELAS FLUTUANTES ========== */
+    .sky-bg {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       pointer-events: none;
       z-index: 0;
       overflow: hidden;
     }
 
-    .gear-bg {
+    .cloud {
       position: absolute;
-      font-size: 80px;
-      opacity: 0.06;
-      color: #ff4444;
-      animation: spin 20s linear infinite;
+      background: #fff;
+      border-radius: 100px;
+      opacity: 0.55;
+      filter: blur(1px);
+      animation: drift 60s linear infinite;
     }
 
-    .gear-bg:nth-child(1) {
-      top: 5%;
-      left: 5%;
-      font-size: 120px;
-      animation-duration: 25s;
-    }
-    .gear-bg:nth-child(2) {
-      bottom: 10%;
-      right: 5%;
-      font-size: 100px;
-      animation-duration: 18s;
-      animation-direction: reverse;
-    }
-    .gear-bg:nth-child(3) {
-      top: 40%;
-      left: 80%;
-      font-size: 60px;
-      animation-duration: 22s;
-    }
-    .gear-bg:nth-child(4) {
-      bottom: 30%;
-      left: 8%;
-      font-size: 70px;
-      animation-duration: 30s;
-      animation-direction: reverse;
-    }
-    .gear-bg:nth-child(5) {
-      top: 70%;
-      left: 50%;
-      font-size: 50px;
-      animation-duration: 15s;
+    .cloud::before,
+    .cloud::after {
+      content: '';
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
     }
 
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
+    .cloud-1 { width: 180px; height: 50px; top: 8%;  left: -10%; animation-duration: 70s; }
+    .cloud-1::before { width: 90px; height: 90px; top: -45px; left: 20px; }
+    .cloud-1::after  { width: 70px; height: 70px; top: -32px; left: 100px; }
+
+    .cloud-2 { width: 140px; height: 40px; top: 22%; left: -15%; animation-duration: 50s; animation-delay: -15s; opacity: 0.4; }
+    .cloud-2::before { width: 70px; height: 70px; top: -34px; left: 14px; }
+    .cloud-2::after  { width: 55px; height: 55px; top: -24px; left: 76px; }
+
+    .cloud-3 { width: 220px; height: 60px; top: 55%; left: -20%; animation-duration: 85s; animation-delay: -30s; opacity: 0.35; }
+    .cloud-3::before { width: 100px; height: 100px; top: -50px; left: 30px; }
+    .cloud-3::after  { width: 80px; height: 80px; top: -38px; left: 130px; }
+
+    .cloud-4 { width: 160px; height: 45px; top: 75%; left: -15%; animation-duration: 65s; animation-delay: -5s; opacity: 0.45; }
+    .cloud-4::before { width: 80px; height: 80px; top: -40px; left: 18px; }
+    .cloud-4::after  { width: 60px; height: 60px; top: -28px; left: 92px; }
+
+    @keyframes drift {
+      from { transform: translateX(0); }
+      to   { transform: translateX(140vw); }
     }
 
+    .star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 6px 1px rgba(255,255,255,0.9);
+      animation: twinkle 4s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.15; transform: scale(0.8); }
+      50%      { opacity: 1;    transform: scale(1.3); }
+    }
+
+    /* ========== FLORES · CANTO DECORATIVO ========== */
+    .floral-corner {
+      position: fixed;
+      top: -40px;
+      left: -40px;
+      width: 260px;
+      height: 260px;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .rose {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 50%, var(--rose) 0%, var(--rose) 30%, transparent 31%),
+        radial-gradient(circle at 35% 35%, var(--glass-strong) 0%, transparent 40%);
+      opacity: 0.85;
+    }
+
+    .rose::before, .rose::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.5);
+      transform: scale(0.62);
+    }
+
+    .rose::after {
+      transform: scale(0.34) rotate(20deg);
+      border-color: rgba(255,255,255,0.7);
+    }
+
+    .rose-1 { top: 10px;  left: 90px; width: 90px; height: 90px; background-image: radial-gradient(circle at 50% 50%, var(--rose-deep) 0%, var(--rose-deep) 30%, transparent 31%), radial-gradient(circle at 35% 35%, var(--glass-strong) 0%, transparent 40%); }
+    .rose-2 { top: 60px;  left: 20px; }
+    .rose-3 { top: 90px;  left: 130px; width: 55px; height: 55px; opacity: 0.7; }
+    .rose-4 { top: 0px;   left: 0px;   width: 50px; height: 50px; opacity: 0.6; background-image: radial-gradient(circle at 50% 50%, var(--lavender) 0%, var(--lavender) 30%, transparent 31%), radial-gradient(circle at 35% 35%, var(--glass-strong) 0%, transparent 40%); }
+
+    .leaf {
+      position: absolute;
+      width: 44px;
+      height: 18px;
+      background: linear-gradient(120deg, #c9dfc4, #a9cf9e);
+      border-radius: 50% 50% 50% 0;
+      opacity: 0.7;
+    }
+
+    .leaf-1 { top: 130px; left: 60px;  transform: rotate(35deg); }
+    .leaf-2 { top: 40px;  left: 160px; transform: rotate(-15deg); }
+    .leaf-3 { top: 150px; left: 150px; transform: rotate(70deg); }
 
     .container {
       max-width: 1100px;
@@ -98,64 +178,193 @@
       z-index: 1;
     }
 
-    /* ========== CORES VERMELHAS ========== */
-    :root {
-      --vermelho-escuro: #1a0808;
-      --vermelho-meio: #4a1a1a;
-      --vermelho-claro: #cc3333;
-      --vermelho-brilho: #ff5555;
-    }
-
     /* ========== NAVBAR ========== */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(200, 50, 50, 0.3);
+      padding: 22px 0;
     }
 
     .navbar .logo {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--vermelho-claro);
-      text-shadow: 0 0 20px rgba(255, 50, 50, 0.3);
+      font-size: 30px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--lavender-deep);
+      text-shadow: 0 2px 12px rgba(168, 147, 214, 0.35);
     }
 
     .navbar ul {
       display: flex;
-      gap: 28px;
+      gap: 26px;
       list-style: none;
       flex-wrap: wrap;
     }
 
     .navbar ul a {
-      color: #d0b0b0;
+      color: var(--ink-soft);
       text-decoration: none;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       transition: color 0.3s;
     }
 
     .navbar ul a:hover {
-      color: var(--vermelho-claro);
+      color: var(--rose-deep);
+    }
+
+    /* ========== BANNER TOPO (estilo Mazul) ========== */
+    .top-banner {
+      margin: 6px 0 20px;
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+      padding: 36px 44px;
+      background: linear-gradient(120deg, var(--lavender-deep), var(--rose-deep));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      box-shadow: 0 14px 44px rgba(168, 147, 214, 0.4);
+    }
+
+    .top-banner::before,
+    .top-banner::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      pointer-events: none;
+    }
+
+    .top-banner::before { width: 220px; height: 220px; top: -100px; right: -60px; }
+    .top-banner::after  { width: 140px; height: 140px; bottom: -80px; left: 10%; }
+
+    .top-banner-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .top-banner-text h2 {
+      color: #fff;
+      font-size: 26px;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .top-banner-text p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .btn-banner {
+      position: relative;
+      z-index: 1;
+      background: #fff;
+      color: var(--rose-deep);
+      padding: 13px 32px;
+      border-radius: 40px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-banner:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ========== STATUS DISCORD AO VIVO (Lanyard) ========== */
+    .hero-avatar-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .status-dot {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      background: var(--ink-faint);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: background 0.3s;
+    }
+
+    .discord-live-card {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 40px;
+      padding: 8px 18px 8px 8px;
+      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.15);
+      width: fit-content;
+    }
+
+    .discord-live-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--sky-2);
+    }
+
+    .discord-live-info {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+
+    .discord-live-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .discord-live-status {
+      font-size: 11px;
+      color: var(--ink-soft);
+    }
+
+    /* ========== SEÇÃO NAMORADO (placeholder) ========== */
+    .love-wrapper .personal-image {
+      order: -1;
     }
 
     /* ========== SEÇÕES ========== */
     section {
-      padding: 60px 0;
-      border-top: 1px solid rgba(200, 50, 50, 0.15);
+      padding: 56px 0;
     }
 
     .section-title {
       font-size: 30px;
-      font-weight: 700;
-      color: var(--vermelho-claro);
-      border-left: 5px solid var(--vermelho-claro);
-      padding-left: 16px;
-      margin-bottom: 32px;
-      text-shadow: 0 0 20px rgba(255, 50, 50, 0.15);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 30px;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .section-title::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--rose-deep);
+      font-size: 18px;
     }
 
     /* ========== HOME / HERO ========== */
@@ -164,55 +373,62 @@
       grid-template-columns: 1fr 1fr;
       gap: 48px;
       align-items: center;
-      padding: 20px 0;
+      padding: 30px 0;
+    }
+
+    .hero-image {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-avatar {
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      border: 4px solid var(--vermelho-claro);
-      box-shadow: 0 0 50px rgba(255, 50, 50, 0.25);
+      border: 5px solid #fff;
+      box-shadow: 0 8px 40px rgba(140, 160, 200, 0.35), 0 0 0 8px rgba(255,255,255,0.35);
       object-fit: cover;
-      background: var(--vermelho-escuro);
+      background: var(--sky-2);
     }
 
     .hero h1 {
-      font-size: 44px;
-      font-weight: 800;
+      font-size: 46px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--ink);
     }
 
     .hero .subtitle {
-      font-size: 20px;
-      color: var(--vermelho-brilho);
-      font-weight: 300;
-      margin: 4px 0 12px;
+      font-size: 18px;
+      color: var(--rose-deep);
+      font-weight: 600;
+      margin: 6px 0 14px;
     }
 
     .hero p {
-      color: #c0a8a8;
+      color: var(--ink-soft);
       max-width: 480px;
       font-size: 15px;
     }
 
     .btn {
       display: inline-block;
-      background: var(--vermelho-claro);
+      background: linear-gradient(135deg, var(--lavender-deep), var(--rose-deep));
       color: #fff;
-      padding: 12px 36px;
+      padding: 13px 36px;
       border-radius: 40px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
-      margin-top: 20px;
-      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-      box-shadow: 0 4px 30px rgba(200, 50, 50, 0.3);
+      margin-top: 22px;
+      transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 6px 24px rgba(168, 147, 214, 0.4);
     }
 
     .btn:hover {
-      background: #aa2222;
       transform: translateY(-2px);
-      box-shadow: 0 6px 40px rgba(200, 50, 50, 0.5);
+      box-shadow: 0 10px 30px rgba(193, 132, 168, 0.5);
     }
 
     /* ========== SOBRE (PROFISSIONAL) ========== */
@@ -224,61 +440,69 @@
     }
 
     .about-text p {
-      color: #c0a8a8;
+      color: var(--ink-soft);
       font-size: 15px;
       margin-bottom: 16px;
     }
 
     .about-text strong {
-      color: var(--vermelho-brilho);
+      color: var(--rose-deep);
     }
 
     .stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     .stat-box {
-      background: rgba(26, 8, 8, 0.7);
-      border: 1px solid rgba(200, 50, 50, 0.25);
-      border-radius: 14px;
-      padding: 14px;
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 16px;
       text-align: center;
+      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.12);
     }
 
     .stat-box .number {
       font-size: 24px;
       font-weight: 700;
-      color: var(--vermelho-claro);
+      font-family: 'Fraunces', serif;
+      color: var(--lavender-deep);
     }
 
     .stat-box .label {
       font-size: 11px;
-      color: #886868;
+      color: var(--ink-faint);
     }
 
     .philosophy-box {
-      background: rgba(26, 8, 8, 0.5);
-      border: 1px solid rgba(200, 50, 50, 0.2);
-      border-radius: 14px;
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
       padding: 16px 20px;
       margin-top: 12px;
+      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.12);
     }
 
     .philosophy-box h3 {
-      color: var(--vermelho-brilho);
+      color: var(--rose-deep);
       font-size: 15px;
+      font-weight: 600;
     }
 
     .philosophy-box p {
       font-size: 14px;
-      color: #886868;
-      margin-top: 2px;
+      color: var(--ink-soft);
+      margin-top: 3px;
     }
 
-    /* ========== IMAGEM GRANDE COM ENGRENAGEM ========== */
+    /* ========== IMAGEM GRANDE ========== */
     .about-image {
       display: flex;
       justify-content: center;
@@ -288,21 +512,24 @@
 
     .gear-avatar-big {
       position: relative;
-      width: 420px;
-      height: 420px;
+      width: 380px;
+      height: 380px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .gear-spin-big {
+    .gear-avatar-big::before {
+      content: '';
       position: absolute;
-      font-size: 480px;
-      color: var(--vermelho-claro);
-      opacity: 0.2;
-      animation: spin 12s linear infinite;
-      z-index: 0;
-      pointer-events: none;
+      inset: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.6), transparent 70%);
+      filter: blur(10px);
+    }
+
+    .gear-spin-big {
+      display: none;
     }
 
     .gear-avatar-big img {
@@ -311,7 +538,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 0 50px rgba(200, 50, 50, 0.25));
+      filter: drop-shadow(0 12px 40px rgba(140, 160, 200, 0.35));
     }
 
     /* ========== SOBRE MIM (PESSOAL) ========== */
@@ -320,20 +547,23 @@
       grid-template-columns: 2fr 1fr;
       gap: 40px;
       align-items: center;
-      background: rgba(26, 8, 8, 0.4);
-      border-radius: 20px;
-      padding: 40px;
-      border: 1px solid rgba(200, 50, 50, 0.15);
+      background: var(--glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 28px;
+      padding: 44px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px rgba(140, 160, 200, 0.15);
     }
 
     .personal-text p {
-      color: #c0a8a8;
+      color: var(--ink-soft);
       font-size: 15px;
       margin-bottom: 16px;
     }
 
     .personal-text strong {
-      color: var(--vermelho-brilho);
+      color: var(--rose-deep);
     }
 
     .personal-tags {
@@ -344,12 +574,13 @@
     }
 
     .personal-tags .tag {
-      background: rgba(200, 50, 50, 0.15);
-      border: 1px solid rgba(200, 50, 50, 0.3);
+      background: rgba(205, 191, 232, 0.3);
+      border: 1px solid rgba(205, 191, 232, 0.5);
       padding: 6px 16px;
       border-radius: 30px;
       font-size: 13px;
-      color: #d0b0b0;
+      font-weight: 600;
+      color: var(--ink);
     }
 
     .personal-image {
@@ -358,22 +589,20 @@
       align-items: center;
     }
 
-    /* Estilo pra foto de verdade */
     .personal-foto {
       width: 100%;
       max-width: 220px;
       height: 220px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid var(--vermelho-claro);
-      box-shadow: 0 0 40px rgba(200, 50, 50, 0.25);
-      background: var(--vermelho-escuro);
+      border: 5px solid #fff;
+      box-shadow: 0 8px 30px rgba(140, 160, 200, 0.3), 0 0 0 6px rgba(219, 169, 198, 0.25);
+      background: var(--sky-2);
     }
 
-    /* Placeholder caso a foto não carregue */
     .personal-photo-placeholder {
-      background: rgba(26, 8, 8, 0.6);
-      border: 2px dashed var(--vermelho-claro);
+      background: rgba(255,255,255,0.4);
+      border: 2px dashed var(--rose);
       border-radius: 50%;
       width: 100%;
       max-width: 220px;
@@ -383,7 +612,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #886868;
+      color: var(--ink-faint);
     }
 
     .personal-photo-placeholder span {
@@ -393,48 +622,52 @@
 
     .personal-photo-placeholder p {
       font-size: 14px;
-      font-weight: 500;
-      color: var(--vermelho-claro);
+      font-weight: 600;
+      color: var(--rose-deep);
     }
 
     /* ========== EXPERIÊNCIA ========== */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      gap: 22px;
     }
 
     .card {
-      background: rgba(26, 8, 8, 0.6);
-      border: 1px solid rgba(200, 50, 50, 0.2);
-      border-radius: 18px;
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
       overflow: hidden;
-      transition: border-color 0.3s, transform 0.2s;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.12);
     }
 
     .card:hover {
-      border-color: var(--vermelho-claro);
-      transform: translateY(-4px);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 34px rgba(140, 160, 200, 0.25);
     }
 
     .card .info {
-      padding: 20px;
+      padding: 22px;
     }
 
     .card .info h3 {
-      font-size: 18px;
-      color: #fff;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--ink);
     }
 
     .card .info .tag {
       font-size: 12px;
-      color: var(--vermelho-brilho);
-      font-weight: 600;
+      color: var(--rose-deep);
+      font-weight: 700;
     }
 
     .card .info .desc {
       font-size: 14px;
-      color: #a08888;
+      color: var(--ink-soft);
       margin-top: 6px;
     }
 
@@ -446,28 +679,84 @@
     }
 
     .skill-card {
-      background: rgba(26, 8, 8, 0.6);
-      border: 1px solid rgba(200, 50, 50, 0.2);
-      border-radius: 16px;
-      padding: 24px;
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 26px;
       text-align: center;
+      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.12);
+      transition: transform 0.25s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
     }
 
     .skill-card .icon {
       font-size: 36px;
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .skill-card h3 {
-      color: var(--vermelho-brilho);
+      color: var(--lavender-deep);
       font-size: 16px;
+      font-weight: 600;
     }
 
     .skill-card p {
-      color: #886868;
+      color: var(--ink-soft);
       font-size: 13px;
       margin-top: 4px;
+    }
+
+    /* ========== SERVIDORES ========== */
+    .servers-intro {
+      color: var(--ink-soft);
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    .server-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .server-card {
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.12);
+    }
+
+    .server-badge {
+      display: inline-block;
+      background: rgba(219, 169, 198, 0.25);
+      border: 1px solid rgba(219, 169, 198, 0.5);
+      color: var(--rose-deep);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 30px;
+      margin-bottom: 10px;
+    }
+
+    .server-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .server-card p {
+      font-size: 14px;
+      color: var(--ink-soft);
     }
 
     /* ========== CONTACT ========== */
@@ -479,29 +768,30 @@
     }
 
     .contact-links a {
-      background: rgba(26, 8, 8, 0.7);
-      border: 1px solid rgba(200, 50, 50, 0.25);
-      padding: 12px 32px;
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      padding: 13px 34px;
       border-radius: 40px;
-      color: #c0a8a8;
+      color: var(--ink);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 14px;
-      transition: border-color 0.3s, background 0.3s, color 0.3s;
+      transition: box-shadow 0.3s, transform 0.2s, color 0.3s;
     }
 
     .contact-links a:hover {
-      border-color: var(--vermelho-claro);
-      background: rgba(200, 50, 50, 0.15);
-      color: #fff;
+      box-shadow: 0 8px 24px rgba(140, 160, 200, 0.25);
+      transform: translateY(-2px);
+      color: var(--rose-deep);
     }
 
     .footer {
       text-align: center;
-      padding: 30px 0 20px;
-      color: #664848;
+      padding: 30px 0 24px;
+      color: var(--ink-faint);
       font-size: 13px;
-      border-top: 1px solid rgba(200, 50, 50, 0.15);
     }
 
     /* ========== RESPONSIVO ========== */
@@ -530,17 +820,13 @@
       }
 
       .gear-avatar-big {
-        width: 280px;
-        height: 280px;
-      }
-
-      .gear-spin-big {
-        font-size: 320px;
+        width: 260px;
+        height: 260px;
       }
 
       .personal-wrapper {
         grid-template-columns: 1fr;
-        padding: 24px;
+        padding: 28px;
         text-align: center;
       }
 
@@ -572,25 +858,16 @@
         font-size: 32px;
       }
 
-      .gear-bg {
-        font-size: 40px !important;
-      }
-      .gear-bg:nth-child(1) {
-        font-size: 60px !important;
-      }
-      .gear-bg:nth-child(2) {
-        font-size: 50px !important;
+      .floral-corner {
+        width: 160px;
+        height: 160px;
       }
     }
 
     @media (max-width: 480px) {
       .gear-avatar-big {
-        width: 220px;
-        height: 220px;
-      }
-
-      .gear-spin-big {
-        font-size: 260px;
+        width: 200px;
+        height: 200px;
       }
 
       .hero-avatar {
@@ -611,18 +888,32 @@
         max-width: 150px;
         height: 150px;
       }
+
+      .floral-corner {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== ENGRENAGENS DE FUNDO ===== -->
-  <div class="gears-bg">
-    <div class="gear-bg">⚙</div>
-    <div class="gear-bg">⚙</div>
-    <div class="gear-bg">⚙</div>
-    <div class="gear-bg">⚙</div>
-    <div class="gear-bg">⚙</div>
+  <!-- ===== CÉU DE FUNDO: NUVENS + ESTRELAS ===== -->
+  <div class="sky-bg" id="skyBg">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+  </div>
+
+  <!-- ===== FLORES NO CANTO ===== -->
+  <div class="floral-corner">
+    <div class="rose rose-1"></div>
+    <div class="rose rose-2"></div>
+    <div class="rose rose-3"></div>
+    <div class="rose rose-4"></div>
+    <div class="leaf leaf-1"></div>
+    <div class="leaf leaf-2"></div>
+    <div class="leaf leaf-3"></div>
   </div>
 
   <!-- ===== CONTEÚDO ===== -->
@@ -630,17 +921,27 @@
 
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar">
-      <span class="logo">Yezzy</span>
+      <span class="logo">yezzy</span>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">Sobre</a></li>
         <li><a href="#personal">Pessoal</a></li>
+        <li><a href="#love">Namorado</a></li>
         <li><a href="#experience">Experiência</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#server">Servidores</a></li>
+        <li><a href="#servers">Servidores</a></li>
         <li><a href="#contact">Contato</a></li>
       </ul>
     </nav>
+
+    <!-- ===== BANNER TOPO (estilo Mazul) ===== -->
+    <div class="top-banner">
+      <div class="top-banner-text">
+        <h2>Yezzy tá no ar 🌤️</h2>
+        <p>Conheça meu portfólio completo, projetos e comunidades.</p>
+      </div>
+      <a href="https://yezport.vercel.app/" target="_blank" class="btn-banner">yezport.vercel.app →</a>
+    </div>
 
     <!-- ===== HOME / HERO ===== -->
     <section id="home">
@@ -655,12 +956,22 @@
           <a href="#contact" class="btn">Vamos conversar →</a>
         </div>
         <div class="hero-image">
-          <img
-            src="images/IMG_1970.jpeg"
-            alt="Yezzy"
-            class="hero-avatar"
-            onerror="this.src='https://via.placeholder.com/200/1a0808/cc3333?text=Yezzy'"
-          />
+          <div class="hero-avatar-wrap">
+            <img
+              src="images/IMG_1970.jpeg"
+              alt="Yezzy"
+              class="hero-avatar"
+              onerror="this.src='https://via.placeholder.com/200/cfe3f5/40506a?text=Yezzy'"
+            />
+            <span class="status-dot" id="statusDot" title="Status no Discord"></span>
+          </div>
+          <div class="discord-live-card" id="discordCard">
+            <img id="discordAvatar" class="discord-live-avatar" src="" alt="Avatar Discord" />
+            <div class="discord-live-info">
+              <span class="discord-live-name" id="discordName">carregando…</span>
+              <span class="discord-live-status" id="discordStatusText">—</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -706,11 +1017,10 @@
 
         <div class="about-image">
           <div class="gear-avatar-big">
-            <div class="gear-spin-big">⚙</div>
             <img
               src="images/_Hugo_-removebg-preview.png"
               alt="Yezzy Arte"
-              onerror="this.src='https://via.placeholder.com/400/1a0808/cc3333?text=Arte'"
+              onerror="this.src='https://via.placeholder.com/400/cfe3f5/40506a?text=Arte'"
             />
           </div>
         </div>
@@ -723,20 +1033,20 @@
       <div class="personal-wrapper">
         <div class="personal-text">
           <p>
-            Oi! Eu sou a <strong>Sofia</strong>, mas pode me chamar de <strong>Yezzy ou Sofi</strong> se quiser. 
+            Oi! Eu sou a <strong>Sofia</strong>, mas pode me chamar de <strong>Yezzy ou Sofi</strong> se quiser.
             Tenho 16 anos, moro em Portugal, mas sou Afro-Brasileira!:3
           </p>
           <p>
-            Quando não estou liderando comunidades ou programando, você vai me encontrar 
-            mergulhada em <strong>fanarts</strong>, ouvindo música (sempre com fone!) ou 
+            Quando não estou liderando comunidades ou programando, você vai me encontrar
+            mergulhada em <strong>fanarts</strong>, ouvindo música (sempre com fone!) ou
             maratonando séries criminais. Ah, e sou viciada em rolinhos de salsicha, sempre voltando da escola compro um.
           </p>
           <p>
-            Minha maior motivação é ver as pessoas se conectando e se divertindo em 
-            espaços que ajudei a construir. Acredito que uma comunidade bem cuidada 
+            Minha maior motivação é ver as pessoas se conectando e se divertindo em
+            espaços que ajudei a construir. Acredito que uma comunidade bem cuidada
             pode ser o lugar mais incrível do mundo.
           </p>
-          
+
           <div class="personal-tags">
             <span class="tag">🎨 Fanarts</span>
             <span class="tag">☕ Café</span>
@@ -752,8 +1062,31 @@
             src="images/transferir.jpeg"
             alt="Sofia - Yezzy"
             class="personal-foto"
-            onerror="this.src='https://via.placeholder.com/220/1a0808/cc3333?text=Sua+Foto'"
+            onerror="this.src='https://via.placeholder.com/220/cfe3f5/40506a?text=Sua+Foto'"
           />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NAMORADO (placeholder — troque foto e texto quando quiser) ===== -->
+    <section id="love">
+      <h2 class="section-title">Meu Amor ✨</h2>
+      <div class="personal-wrapper love-wrapper">
+        <div class="personal-image">
+          <div class="personal-photo-placeholder">
+            <span>💜</span>
+            <p>Foto em breve</p>
+          </div>
+        </div>
+        <div class="personal-text">
+          <p>
+            Esse cantinho é pro <strong>[nome do seu amor]</strong> — troque essa foto placeholder
+            e escreva sobre ele quando quiser. Pode contar como se conheceram, o que ele gosta,
+            ou só deixar uma declaração fofa aqui.
+          </p>
+          <div class="personal-tags">
+            <span class="tag">💌 Em construção</span>
+          </div>
         </div>
       </div>
     </section>
@@ -815,14 +1148,18 @@
       </div>
     </section>
 
+    <!-- ===== SERVIDORES ===== -->
     <section id="servers">
       <h2 class="section-title">Servidores da minha confiança :3</h2>
-      <p style"color: #886868; margin-bottom: 24px; font.size: 14;">Conheça o servidor dos meus amigos !
-      </p>
+      <p class="servers-intro">Conheça o servidor dos meus amigos!</p>
       <div class="server-grid">
-        <div class="server-badge">𓍢ִ໋🌷͙֒  - Confiável</div>
-        <h3>heavens </></h3>
-        <p class"server-desc"
+        <div class="server-card">
+          <span class="server-badge">𓍢ִ໋🌷͙֒ Confiável</span>
+          <h3>heavens &lt;/&gt;</h3>
+          <p class="server-desc">Comunidade feita por mim, feita com muito carinho.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- ===== CONTACT ===== -->
     <section id="contact">
@@ -840,6 +1177,78 @@
     </div>
 
   </div>
+
+  <script>
+    // Gera estrelas piscando espalhadas pelo céu, só na metade superior
+    const skyBg = document.getElementById('skyBg');
+    const starCount = 35;
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 70 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = (Math.random() * 4) + 's';
+      star.style.animationDuration = (3 + Math.random() * 3) + 's';
+      skyBg.appendChild(star);
+    }
+
+    // ===== STATUS DISCORD AO VIVO (Lanyard) =====
+    // 1. Troque abaixo pelo SEU ID do Discord (número, ative o Modo Desenvolvedor pra copiar)
+    // 2. Entre em discord.gg/lanyard com essa conta — sem isso o status não aparece
+    const DISCORD_ID = ' 1366621726611607553';
+
+    const statusLabels = {
+      online: 'Online agora',
+      idle: 'Ausente',
+      dnd: 'Não perturbe',
+      offline: 'Offline'
+    };
+
+    const statusColors = {
+      online: '#57d68d',
+      idle: '#faa61a',
+      dnd: '#f04747',
+      offline: '#a3aec2'
+    };
+
+    async function loadDiscordStatus() {
+      const dot = document.getElementById('statusDot');
+      const nameEl = document.getElementById('discordName');
+      const statusEl = document.getElementById('discordStatusText');
+      const avatarEl = document.getElementById('discordAvatar');
+
+      if (!DISCORD_ID || DISCORD_ID === ' 1366621726611607553') {
+        nameEl.textContent = 'Configure seu ID';
+        statusEl.textContent = 'veja o comentário no código';
+        return;
+      }
+
+      try {
+        const res = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`);
+        const json = await res.json();
+        if (!json.success) throw new Error('Lanyard não encontrou esse ID');
+
+        const data = json.data;
+        const user = data.discord_user;
+        const status = data.discord_status || 'offline';
+
+        const avatarUrl = user.avatar
+          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=64`
+          : `https://cdn.discordapp.com/embed/avatars/0.png`;
+
+        avatarEl.src = avatarUrl;
+        nameEl.textContent = user.global_name || user.username;
+        statusEl.textContent = statusLabels[status] || 'Offline';
+        dot.style.background = statusColors[status] || statusColors.offline;
+      } catch (err) {
+        nameEl.textContent = 'Status indisponível';
+        statusEl.textContent = 'tente novamente mais tarde';
+      }
+    }
+
+    loadDiscordStatus();
+    setInterval(loadDiscordStatus, 60000); // atualiza a cada 1 min
+  </script>
 
 </body>
 </html>
