@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
 
@@ -50,7 +50,7 @@
     }
 
     h1, h2, h3, .logo {
-      font-family: 'Fraunces', serif;
+      font-family: 'Baloo 2', sans-serif;
     }
 
     /* ========== CÉU · NUVENS E ESTRELAS FLUTUANTES ========== */
@@ -190,9 +190,45 @@
     .navbar .logo {
       font-size: 30px;
       font-weight: 600;
-      font-style: italic;
       color: var(--lavender-deep);
       text-shadow: 0 2px 12px rgba(168, 147, 214, 0.35);
+    }
+
+    .logo-cat {
+      display: inline-block;
+      width: 54px;
+      height: 42px;
+      text-shadow: none;
+    }
+
+    .logo-cat svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .cat-eye {
+      transform-origin: center;
+      animation: cat-blink 4.5s ease-in-out infinite;
+    }
+
+    .cat-eye:nth-child(6) {
+      animation-delay: 0.05s;
+    }
+
+    @keyframes cat-blink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0.1); }
+    }
+
+    .cat-tail {
+      transform-origin: 78px 40px;
+      animation: cat-wag 2.4s ease-in-out infinite;
+    }
+
+    @keyframes cat-wag {
+      0%, 100% { transform: rotate(0deg); }
+      50%      { transform: rotate(-10deg); }
     }
 
     .navbar ul {
@@ -242,22 +278,14 @@
     .top-banner::before { width: 220px; height: 220px; top: -100px; right: -60px; }
     .top-banner::after  { width: 140px; height: 140px; bottom: -80px; left: 10%; }
 
-    .top-banner-text {
+    .top-banner-img {
       position: relative;
       z-index: 1;
-    }
-
-    .top-banner-text h2 {
-      color: #fff;
-      font-size: 26px;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    .top-banner-text p {
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 14px;
-      margin-top: 4px;
+      max-height: 90px;
+      width: auto;
+      max-width: 60%;
+      object-fit: contain;
+      border-radius: 14px;
     }
 
     .btn-banner {
@@ -352,7 +380,6 @@
     .section-title {
       font-size: 30px;
       font-weight: 600;
-      font-style: italic;
       color: var(--ink);
       margin-bottom: 30px;
       position: relative;
@@ -395,7 +422,6 @@
     .hero h1 {
       font-size: 46px;
       font-weight: 600;
-      font-style: italic;
       color: var(--ink);
     }
 
@@ -470,7 +496,7 @@
     .stat-box .number {
       font-size: 24px;
       font-weight: 700;
-      font-family: 'Fraunces', serif;
+      font-family: 'Baloo 2', sans-serif;
       color: var(--lavender-deep);
     }
 
@@ -921,11 +947,34 @@
 
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar">
-      <span class="logo">yezzy</span>
+      <span class="logo logo-cat" aria-label="Yezzy">
+        <svg viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
+          <!-- rabo -->
+          <path class="cat-tail" d="M 78 55 Q 95 50 90 30 Q 88 20 78 22" fill="none" stroke="#a893d6" stroke-width="6" stroke-linecap="round"/>
+          <!-- corpo/cabeça -->
+          <ellipse cx="42" cy="42" rx="26" ry="22" fill="#cdbfe8"/>
+          <!-- orelhas -->
+          <path d="M 22 26 L 16 8 L 34 20 Z" fill="#cdbfe8"/>
+          <path d="M 62 26 L 68 8 L 50 20 Z" fill="#cdbfe8"/>
+          <path d="M 24 22 L 21 12 L 30 19 Z" fill="#dba9c6"/>
+          <path d="M 60 22 L 63 12 L 54 19 Z" fill="#dba9c6"/>
+          <!-- olhos -->
+          <ellipse class="cat-eye" cx="33" cy="40" rx="4" ry="5" fill="#40506a"/>
+          <ellipse class="cat-eye" cx="51" cy="40" rx="4" ry="5" fill="#40506a"/>
+          <!-- focinho -->
+          <path d="M 42 47 L 39 50 L 45 50 Z" fill="#dba9c6"/>
+          <!-- bigodes -->
+          <line x1="12" y1="44" x2="26" y2="42" stroke="#a893d6" stroke-width="1.5"/>
+          <line x1="12" y1="50" x2="26" y2="48" stroke="#a893d6" stroke-width="1.5"/>
+          <line x1="58" y1="42" x2="72" y2="44" stroke="#a893d6" stroke-width="1.5"/>
+          <line x1="58" y1="48" x2="72" y2="50" stroke="#a893d6" stroke-width="1.5"/>
+        </svg>
+      </span>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">Sobre</a></li>
         <li><a href="#personal">Pessoal</a></li>
+        <li><a href="#amizades">Amizades</a></li>
         <li><a href="#experience">Experiência</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#servers">Servidores</a></li>
@@ -935,10 +984,12 @@
 
     <!-- ===== BANNER TOPO (estilo Mazul) ===== -->
     <div class="top-banner">
-      <div class="top-banner-text">
-        <h2>Bem vindo ao meu mundo !</h2>
-        <p>Conheça meu portfólio completo, projetos e comunidades.</p>
-      </div>
+      <img
+        src="https://www.image2url.com/r2/default/images/1787348429365-613f7782-ccd7-4d1f-b9d8-1baacdff1f0f.jpg"
+        alt="Banner Yezzy"
+        class="top-banner-img"
+        onerror="this.src='https://via.placeholder.com/900x160/cdbfe8/ffffff?text=Sua+imagem+aqui'"
+      >/>
     </div>
 
     <!-- ===== HOME / HERO ===== -->
@@ -956,7 +1007,7 @@
         <div class="hero-image">
           <div class="hero-avatar-wrap">
             <img
-              src="images/IMG_1970.jpeg"
+              src="https://www.image2url.com/r2/default/images/1787348263074-d4961ac6-d5d0-4147-9469-458ec70fa1ff.jpg"
               alt="Yezzy"
               class="hero-avatar"
               onerror="this.src='https://via.placeholder.com/200/cfe3f5/40506a?text=Yezzy'"
@@ -1016,7 +1067,7 @@
         <div class="about-image">
           <div class="gear-avatar-big">
             <img
-              src="images/_Hugo_-removebg-preview.png"
+              src="https://www.image2url.com/r2/default/images/1787348097348-4f16ed78-8920-4252-858f-cc2cd3f620f1.png"
               alt="Yezzy Arte"
               onerror="this.src='https://via.placeholder.com/400/cfe3f5/40506a?text=Arte'"
             />
@@ -1057,7 +1108,7 @@
         <!-- Lado direito: SUA FOTO -->
         <div class="personal-image">
           <img
-            src="images/transferir.jpeg"
+            src="https://www.image2url.com/r2/default/images/1787348600131-957c697b-4e31-4d40-bd5e-f1b336dfbf5b.jpg"
             alt="Sofia - Yezzy"
             class="personal-foto"
             onerror="this.src='https://via.placeholder.com/220/cfe3f5/40506a?text=Sua+Foto'"
@@ -1067,23 +1118,24 @@
     </section>
 
     <!-- ===== NAMORADO (placeholder — troque foto e texto quando quiser) ===== -->
-    <section id="love">
+    <section id="amizade">
       <h2 class="section-title">Amizades</h2>
       <div class="personal-wrapper love-wrapper">
         <div class="personal-image">
-          <div class="personal-photo-placeholder">
-            <span>💜</span>
-            <p>Foto em breve</p>
-          </div>
+          <img
+            src="https://www.image2url.com/r2/default/images/1787347553382-89d94479-6e31-4dea-b912-be13814fab58.png"
+            alt="Rafa"
+            class="personal-foto"
+            onerror="this.src='https://via.placeholder.com/220/cfe3f5/40506a?text=Rafa'"
+          />
         </div>
         <div class="personal-text">
           <p>
-            Esse cantinho é pro <strong>Rafa</strong> — Você transforma meus dias simples em momentos incríveis só por estar por perto. Obrigada(o) por ser meu porto seguro, meu melhor amigo e o amor da minha vida. Te amo infinitamente! ✨❤️
+            Esse cantinho é pro <strong>Rafa</strong> — Você transforma meus dias simples em momentos incríveis só por estar por perto. Obrigado por ser meu porto seguro, meu melhor amigo e o amor da minha vida. Te amo infinitamente!
           </p>
           <div class="personal-tags">
-            <span class="tag">Posse do Heavens</span>
             <span class="tag">Dono da BML</span>
-            <span class="tag">Meu 01</span>
+            <span class="tag">Posse do Heavens</span>
           </div>
         </div>
       </div>
@@ -1120,13 +1172,13 @@
             <p class="tag">Sub Owner · Dev · Promotora · Org de Equipe</p>
             <p class="desc">Deveres de administração, organização de tarefas e bot Maker.</p>
           </div>
-          </div>
-        <div class="card">
+          <div class="card">
           <div class="info">
-            <h3>A Ordem</h3>
-            <p class="tag">Aprendiz de Mov Chat/Call · Passtime</p>
-            <p class="desc">Movimentação de Chats e Call & Posts de contéudo em canais do server.</p>
+            <h3>aOrdem</h3>
+            <p class="tag">Mov Call / Chat · Passtime</p>
+            <p class="desc">Deveres de administração, organização de tarefas e bot Maker.</p>
           </div>
+        </div>
       </div>
     </section>
 
@@ -1221,7 +1273,7 @@
       const statusEl = document.getElementById('discordStatusText');
       const avatarEl = document.getElementById('discordAvatar');
 
-      if (!DISCORD_ID || DISCORD_ID === ' 1366621726611607553') {
+      if (!DISCORD_ID || DISCORD_ID === '1366621726611607553') {
         nameEl.textContent = 'Configure seu ID';
         statusEl.textContent = 'veja o comentário no código';
         return;
