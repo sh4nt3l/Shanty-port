@@ -278,14 +278,15 @@
     .top-banner::before { width: 220px; height: 220px; top: -100px; right: -60px; }
     .top-banner::after  { width: 140px; height: 140px; bottom: -80px; left: 10%; }
 
-    .top-banner-img {
+   .top-banner-img {
   position: relative;
   z-index: 1;
-  max-height: 160px;   /* altura máxima da imagem */
+  max-height: 160px;
   width: auto;
-  max-width: 75%;      /* largura máxima em relação ao banner */
+  max-width: 75%;
   object-fit: contain;
   border-radius: 14px;
+  mix-blend-mode: multiply;   /* funde o branco com o fundo do banner */
 }
 
     .btn-banner {
@@ -1172,13 +1173,13 @@
             <p class="tag">Sub Owner · Dev · Promotora · Org de Equipe</p>
             <p class="desc">Deveres de administração, organização de tarefas e bot Maker.</p>
           </div>
+        </div>
           <div class="card">
           <div class="info">
             <h3>aOrdem</h3>
             <p class="tag">Mov Call / Chat · Passtime</p>
             <p class="desc">Deveres de administração, organização de tarefas e bot Maker.</p>
           </div>
-        </div>
       </div>
     </section>
 
