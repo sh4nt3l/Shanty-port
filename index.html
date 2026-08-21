@@ -251,22 +251,16 @@
     }
 
     /* ========== BANNER TOPO (estilo Mazul) ========== */
-  .top-banner {
+.top-banner {
   margin: 6px 0 20px;
-  border-radius: 0;
   overflow: hidden;
   position: relative;
-  min-height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 30px;
+  width: 100%;
   background: transparent;
   box-shadow: none;
-  flex-direction: column;
-  text-align: center;
+  border-radius: 0;
+  padding: 0;
 }
-
 .top-banner-img {
   position: absolute;
   inset: 0;
@@ -983,13 +977,12 @@
       </ul>
     </nav>
 
-    <!-- ===== BANNER TOPO (estilo Mazul) ===== -->
 <!-- ===== BANNER TOPO ===== -->
-<div class="top-banner" style="display:flex; align-items:center; justify-content:center; padding:20px; background: var(--glass);">
+<div class="top-banner" style="display:flex; align-items:center; justify-content:center; padding:0; background: transparent; margin:0;">
   <img
     src="https://www.image2url.com/r2/default/images/1787352450176-8a830d45-14b6-41f5-ad7e-a27dda9ba7d2.jpg"
     alt="Yezzy Card"
-    style="max-width:100%; height:auto;"
+    style="width:100%; height:auto; display:block; box-shadow: 0 8px 30px rgba(0,0,0,0.25); border-radius: 12px;"
   />
 </div>
 
