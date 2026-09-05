@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shantel · Portfólio Anime</title>
+  <title>Shantel · Gachiakuta</title>
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230d0d0d'/%3E%3Ctext x='50%25' y='68%25' font-size='60' text-anchor='middle' fill='%23b388eb'%3E✦%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Ctext x='50%25' y='72%25' font-size='64' text-anchor='middle' fill='%238b0000'%3E✦%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Permanent+Marker&family=Rubik+Spray+Paint&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -23,21 +23,17 @@
     }
 
     :root {
-      --bg-dark: #0a0a0f;
-      --bg-card: #12121a;
-      --bg-card-hover: #1a1a2e;
-      --text-primary: #f0ecf5;
-      --text-secondary: #a8a0b8;
-      --text-muted: #6a6280;
-      --purple: #7c3aed;
-      --purple-glow: rgba(124, 58, 237, 0.3);
-      --pink: #ec4899;
-      --pink-glow: rgba(236, 72, 153, 0.25);
-      --blue: #3b82f6;
-      --blue-glow: rgba(59, 130, 246, 0.2);
-      --glass: rgba(18, 18, 26, 0.85);
-      --glass-border: rgba(255, 255, 255, 0.06);
-      --shadow-glow: 0 8px 32px rgba(124, 58, 237, 0.15);
+      --bg-dark: #0a0a0a;
+      --bg-card: #14100e;
+      --text-primary: #e8e0d8;
+      --text-secondary: #b8a898;
+      --text-muted: #6a5a50;
+      --blood: #8b0000;
+      --blood-light: #b31b1b;
+      --blood-glow: rgba(139, 0, 0, 0.35);
+      --spray: rgba(139, 0, 0, 0.06);
+      --glass: rgba(20, 16, 14, 0.88);
+      --glass-border: rgba(232, 224, 216, 0.06);
     }
 
     body {
@@ -49,67 +45,128 @@
       min-height: 100vh;
     }
 
-    h1, h2, h3, .logo {
-      font-family: 'Baloo 2', sans-serif;
+    h1, h2, h3, .logo, .graffiti {
+      font-family: 'Permanent Marker', cursive;
+      letter-spacing: 1px;
     }
 
-    .anime-font {
-      font-family: 'Orbitron', monospace;
-      letter-spacing: 2px;
+    .spray-font {
+      font-family: 'Rubik Spray Paint', cursive;
     }
 
-    /* ===== FUNDO COM GRID E GRADIENTE ===== */
+    /* ===== FUNDO COM TEXTURA DE PAREDE ===== */
     .bg-scene {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
       overflow: hidden;
-      background:
-        radial-gradient(ellipse at 20% 30%, rgba(124, 58, 237, 0.06) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 70%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
-        var(--bg-dark);
+      background: var(--bg-dark);
     }
 
-    .bg-scene::after {
+    .bg-scene::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
+        radial-gradient(circle at 20% 30%, rgba(139, 0, 0, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.03) 0%, transparent 40%);
     }
 
-    /* ===== PARTÍCULAS ===== */
-    .particle {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: rgba(124, 58, 237, 0.2);
-      border-radius: 50%;
-      animation: float-particle linear infinite;
-    }
-
-    @keyframes float-particle {
-      0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100vh) translateX(40px) scale(0.3); opacity: 0; }
-    }
-
-    /* ===== SCANLINE (efeito anime) ===== */
-    .scanline {
+    /* Textura de parede com CSS */
+    .wall-texture {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 999;
+      z-index: 0;
+      opacity: 0.06;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 2px,
+          rgba(255, 255, 255, 0.02) 2px,
+          rgba(255, 255, 255, 0.02) 4px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 3px,
+          rgba(255, 255, 255, 0.01) 3px,
+          rgba(255, 255, 255, 0.01) 6px
+        );
+    }
+
+    /* Respingos de tinta */
+    .splatter {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.08;
+      background: var(--blood);
+    }
+
+    .splatter-1 {
+      width: 300px;
+      height: 300px;
+      top: -100px;
+      right: -80px;
+      filter: blur(40px);
+      opacity: 0.06;
+    }
+
+    .splatter-2 {
+      width: 200px;
+      height: 200px;
+      bottom: 50px;
+      left: -60px;
+      filter: blur(50px);
+      opacity: 0.04;
+    }
+
+    .splatter-3 {
+      width: 120px;
+      height: 120px;
+      top: 40%;
+      right: 10%;
+      filter: blur(30px);
+      opacity: 0.05;
+    }
+
+    /* ===== CORRENTES ===== */
+    .chain {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.08;
+    }
+
+    .chain-1 {
+      top: 0;
+      right: 30px;
+      width: 3px;
+      height: 100vh;
       background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 0, 0, 0.03) 2px,
-        rgba(0, 0, 0, 0.03) 4px
+        to bottom,
+        var(--text-muted) 0px,
+        var(--text-muted) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+    }
+
+    .chain-2 {
+      bottom: 0;
+      left: 50px;
+      width: 30%;
+      height: 3px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--text-muted) 0px,
+        var(--text-muted) 10px,
+        transparent 10px,
+        transparent 20px
       );
     }
 
@@ -128,33 +185,35 @@
       align-items: center;
       flex-wrap: wrap;
       padding: 22px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 2px solid rgba(139, 0, 0, 0.15);
     }
 
     .logo {
-      font-size: 32px;
-      font-weight: 800;
-      font-family: 'Orbitron', monospace;
-      background: linear-gradient(135deg, var(--purple), var(--pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: none;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--text-primary);
+      text-shadow: 0 0 30px var(--blood-glow);
+      font-family: 'Rubik Spray Paint', cursive;
       letter-spacing: 4px;
+    }
+
+    .logo span {
+      color: var(--blood);
     }
 
     .logo-sub {
       font-family: 'Quicksand', sans-serif;
-      font-size: 11px;
+      font-size: 10px;
       color: var(--text-muted);
       letter-spacing: 6px;
-      -webkit-text-fill-color: var(--text-muted);
       display: block;
       font-weight: 400;
+      text-transform: uppercase;
     }
 
     .navbar ul {
       display: flex;
-      gap: 28px;
+      gap: 24px;
       list-style: none;
       flex-wrap: wrap;
     }
@@ -162,18 +221,17 @@
     .navbar ul a {
       color: var(--text-secondary);
       text-decoration: none;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       transition: color 0.3s, text-shadow 0.3s;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      font-family: 'Orbitron', monospace;
-      font-size: 11px;
+      font-family: 'Permanent Marker', cursive;
     }
 
     .navbar ul a:hover {
-      color: var(--purple);
-      text-shadow: 0 0 20px var(--purple-glow);
+      color: var(--blood-light);
+      text-shadow: 0 0 20px var(--blood-glow);
     }
 
     /* ===== STATUS DISCORD ===== */
@@ -191,7 +249,7 @@
       border-radius: 50%;
       border: 3px solid var(--bg-dark);
       background: var(--text-muted);
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
       transition: background 0.3s;
     }
 
@@ -205,7 +263,7 @@
       border: 1px solid var(--glass-border);
       border-radius: 40px;
       padding: 8px 18px 8px 8px;
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
       width: fit-content;
     }
 
@@ -240,9 +298,9 @@
     }
 
     .section-title {
-      font-size: 28px;
-      font-weight: 700;
-      font-family: 'Orbitron', monospace;
+      font-size: 32px;
+      font-weight: 400;
+      font-family: 'Rubik Spray Paint', cursive;
       color: var(--text-primary);
       margin-bottom: 30px;
       position: relative;
@@ -254,10 +312,11 @@
       position: absolute;
       bottom: -8px;
       left: 0;
-      width: 60px;
+      width: 80px;
       height: 3px;
-      background: linear-gradient(90deg, var(--purple), var(--pink));
-      border-radius: 4px;
+      background: var(--blood);
+      border-radius: 2px;
+      box-shadow: 0 0 20px var(--blood-glow);
     }
 
     .section-title-center {
@@ -288,36 +347,38 @@
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      border: 3px solid var(--purple);
-      box-shadow: 0 0 40px var(--purple-glow), 0 0 80px rgba(124, 58, 237, 0.05);
+      border: 3px solid var(--blood);
+      box-shadow: 0 0 40px var(--blood-glow), 0 0 80px rgba(139, 0, 0, 0.05);
       object-fit: cover;
       background: var(--bg-card);
+      filter: contrast(1.1) saturate(0.9);
     }
 
     .hero h1 {
-      font-size: 52px;
-      font-weight: 800;
-      font-family: 'Orbitron', monospace;
-      background: linear-gradient(135deg, var(--purple), var(--pink), var(--blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 56px;
+      font-weight: 400;
+      font-family: 'Rubik Spray Paint', cursive;
+      color: var(--text-primary);
       letter-spacing: 4px;
+      text-shadow: 0 0 40px var(--blood-glow);
+    }
+
+    .hero h1 span {
+      color: var(--blood);
     }
 
     .hero .subtitle {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--text-secondary);
       font-weight: 600;
       margin: 6px 0 14px;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      font-family: 'Orbitron', monospace;
-      font-size: 12px;
+      font-family: 'Permanent Marker', cursive;
     }
 
     .hero .subtitle span {
-      color: var(--pink);
-      -webkit-text-fill-color: var(--pink);
+      color: var(--blood-light);
     }
 
     .hero p {
@@ -328,134 +389,139 @@
 
     .btn {
       display: inline-block;
-      background: linear-gradient(135deg, var(--purple), var(--pink));
+      background: var(--blood);
       color: #fff;
       padding: 14px 40px;
-      border-radius: 40px;
+      border-radius: 0;
       text-decoration: none;
       font-weight: 700;
       font-size: 13px;
       margin-top: 22px;
-      transition: transform 0.2s, box-shadow 0.3s;
-      box-shadow: 0 6px 24px var(--purple-glow);
-      font-family: 'Orbitron', monospace;
-      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+      box-shadow: 0 6px 24px var(--blood-glow);
+      font-family: 'Permanent Marker', cursive;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .btn:hover {
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 10px 40px var(--purple-glow);
+      background: var(--blood-light);
+      box-shadow: 0 10px 40px var(--blood-glow);
     }
 
     .btn-outline {
       background: transparent;
-      border: 2px solid var(--purple);
+      border: 2px solid var(--blood);
       box-shadow: none;
       color: var(--text-primary);
     }
 
     .btn-outline:hover {
-      background: var(--purple);
+      background: var(--blood);
       color: #fff;
-      box-shadow: 0 6px 24px var(--purple-glow);
     }
 
-    /* ===== PROJETOS EM DESTAQUE (MOST POPULAR) ===== */
-    .featured-grid {
+    /* ===== PROJETOS ===== */
+    .project-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
     }
 
-    .featured-card {
+    .project-card {
       background: var(--bg-card);
-      border-radius: 20px;
+      border-radius: 0;
       overflow: hidden;
       border: 1px solid var(--glass-border);
       transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
       position: relative;
     }
 
-    .featured-card:hover {
+    .project-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 40px var(--purple-glow);
-      border-color: rgba(124, 58, 237, 0.3);
+      box-shadow: 0 12px 40px var(--blood-glow);
+      border-color: rgba(139, 0, 0, 0.3);
     }
 
-    .featured-card .card-image {
+    .project-card .card-image {
       width: 100%;
       height: 200px;
       object-fit: cover;
       background: var(--bg-card);
       display: block;
+      filter: contrast(1.1);
     }
 
-    .featured-card .card-badge {
+    .project-card .card-badge {
       position: absolute;
       top: 16px;
       left: 16px;
-      background: linear-gradient(135deg, var(--purple), var(--pink));
-      padding: 4px 14px;
-      border-radius: 20px;
+      background: var(--blood);
+      padding: 4px 16px;
+      border-radius: 0;
       font-size: 11px;
       font-weight: 700;
       color: #fff;
-      font-family: 'Orbitron', monospace;
-      letter-spacing: 1px;
-    }
-
-    .featured-card .card-rating {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #fbbf24;
-      font-family: 'Orbitron', monospace;
-    }
-
-    .featured-card .card-info {
-      padding: 20px 22px 24px;
-    }
-
-    .featured-card .card-info h3 {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-primary);
-      font-family: 'Baloo 2', sans-serif;
-    }
-
-    .featured-card .card-info .card-tag {
-      font-size: 11px;
-      color: var(--purple);
-      font-weight: 700;
-      font-family: 'Orbitron', monospace;
+      font-family: 'Permanent Marker', cursive;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    .featured-card .card-info p {
+    .project-card .card-rating {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 4px 14px;
+      border-radius: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fbbf24;
+      font-family: 'Permanent Marker', cursive;
+    }
+
+    .project-card .card-info {
+      padding: 20px 22px 24px;
+    }
+
+    .project-card .card-info h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: 'Permanent Marker', cursive;
+    }
+
+    .project-card .card-info .card-tag {
+      font-size: 11px;
+      color: var(--blood-light);
+      font-weight: 700;
+      font-family: 'Permanent Marker', cursive;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .project-card .card-info p {
       font-size: 14px;
       color: var(--text-secondary);
       margin-top: 6px;
     }
 
-    /* ===== PERFIL DE PERSONAGEM (estilo Acti) ===== */
+    /* ===== PERFIL GRAFFITI ===== */
     .profile-wrapper {
       background: var(--glass);
       backdrop-filter: blur(18px);
       border: 1px solid var(--glass-border);
-      border-radius: 28px;
+      border-radius: 0;
       padding: 40px 44px;
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
       display: grid;
       grid-template-columns: 1fr 2fr;
       gap: 40px;
       align-items: start;
+      border-left: 4px solid var(--blood);
     }
 
     .profile-avatar-section {
@@ -470,25 +536,29 @@
       height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--purple);
-      box-shadow: 0 0 40px var(--purple-glow);
+      border: 3px solid var(--blood);
+      box-shadow: 0 0 40px var(--blood-glow);
       background: var(--bg-card);
+      filter: contrast(1.1);
     }
 
     .profile-name {
-      font-size: 28px;
-      font-weight: 800;
-      font-family: 'Orbitron', monospace;
+      font-size: 32px;
+      font-weight: 400;
+      font-family: 'Rubik Spray Paint', cursive;
       margin-top: 16px;
-      background: linear-gradient(135deg, var(--purple), var(--pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text-primary);
+      letter-spacing: 2px;
+    }
+
+    .profile-name span {
+      color: var(--blood);
     }
 
     .profile-handle {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
-      font-family: 'Orbitron', monospace;
+      font-family: 'Permanent Marker', cursive;
       letter-spacing: 2px;
     }
 
@@ -502,7 +572,7 @@
 
     .profile-status-item {
       background: var(--bg-card);
-      border-radius: 12px;
+      border-radius: 0;
       padding: 10px 6px;
       text-align: center;
       border: 1px solid var(--glass-border);
@@ -511,8 +581,8 @@
     }
 
     .profile-status-item:hover {
-      border-color: var(--purple);
-      box-shadow: 0 0 20px var(--purple-glow);
+      border-color: var(--blood);
+      box-shadow: 0 0 20px var(--blood-glow);
     }
 
     .profile-status-item .emoji {
@@ -521,20 +591,24 @@
     }
 
     .profile-status-item .label {
-      font-size: 10px;
+      font-size: 9px;
       color: var(--text-muted);
-      font-family: 'Orbitron', monospace;
+      font-family: 'Permanent Marker', cursive;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
 
     .profile-bio h3 {
       font-size: 18px;
-      font-weight: 700;
-      font-family: 'Orbitron', monospace;
+      font-weight: 400;
+      font-family: 'Rubik Spray Paint', cursive;
       color: var(--text-primary);
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       margin-bottom: 12px;
+    }
+
+    .profile-bio h3 span {
+      color: var(--blood);
     }
 
     .profile-bio p {
@@ -550,19 +624,19 @@
     }
 
     .profile-bio .tag {
-      background: rgba(124, 58, 237, 0.12);
-      border: 1px solid rgba(124, 58, 237, 0.2);
+      background: rgba(139, 0, 0, 0.1);
+      border: 1px solid rgba(139, 0, 0, 0.2);
       padding: 6px 16px;
-      border-radius: 30px;
+      border-radius: 0;
       font-size: 12px;
       font-weight: 600;
       color: var(--text-secondary);
-      font-family: 'Orbitron', monospace;
+      font-family: 'Permanent Marker', cursive;
       letter-spacing: 0.5px;
     }
 
     .profile-bio .tag:hover {
-      border-color: var(--purple);
+      border-color: var(--blood);
       color: var(--text-primary);
     }
 
@@ -575,33 +649,35 @@
 
     .profile-actions .btn-small {
       padding: 10px 28px;
-      border-radius: 30px;
+      border-radius: 0;
       font-size: 11px;
       font-weight: 700;
-      font-family: 'Orbitron', monospace;
+      font-family: 'Permanent Marker', cursive;
       letter-spacing: 1px;
       text-decoration: none;
       transition: all 0.3s;
       border: 1px solid var(--glass-border);
       color: var(--text-secondary);
       background: transparent;
+      text-transform: uppercase;
     }
 
     .profile-actions .btn-small:hover {
-      border-color: var(--purple);
+      border-color: var(--blood);
       color: var(--text-primary);
-      box-shadow: 0 0 20px var(--purple-glow);
+      box-shadow: 0 0 20px var(--blood-glow);
     }
 
     .profile-actions .btn-small.primary {
-      background: linear-gradient(135deg, var(--purple), var(--pink));
+      background: var(--blood);
       color: #fff;
       border: none;
     }
 
     .profile-actions .btn-small.primary:hover {
-      box-shadow: 0 6px 24px var(--purple-glow);
+      box-shadow: 0 6px 24px var(--blood-glow);
       transform: translateY(-2px);
+      background: var(--blood-light);
     }
 
     /* ===== EXPERIÊNCIA ===== */
@@ -615,30 +691,31 @@
       background: var(--glass);
       backdrop-filter: blur(14px);
       border: 1px solid var(--glass-border);
-      border-radius: 18px;
+      border-radius: 0;
       padding: 24px;
       transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      border-left: 3px solid var(--blood);
     }
 
     .exp-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 34px var(--purple-glow);
-      border-color: rgba(124, 58, 237, 0.2);
+      box-shadow: 0 12px 34px var(--blood-glow);
+      border-color: rgba(139, 0, 0, 0.3);
     }
 
     .exp-card h3 {
       font-size: 18px;
       font-weight: 700;
       color: var(--text-primary);
-      font-family: 'Baloo 2', sans-serif;
+      font-family: 'Permanent Marker', cursive;
     }
 
     .exp-card .exp-tag {
       font-size: 11px;
-      color: var(--pink);
+      color: var(--blood-light);
       font-weight: 700;
-      font-family: 'Orbitron', monospace;
+      font-family: 'Permanent Marker', cursive;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
@@ -660,17 +737,17 @@
       background: var(--glass);
       backdrop-filter: blur(14px);
       border: 1px solid var(--glass-border);
-      border-radius: 18px;
+      border-radius: 0;
       padding: 24px 20px;
       text-align: center;
       transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
     .skill-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(124, 58, 237, 0.3);
-      box-shadow: 0 8px 30px var(--purple-glow);
+      border-color: var(--blood);
+      box-shadow: 0 8px 30px var(--blood-glow);
     }
 
     .skill-card .icon {
@@ -680,10 +757,10 @@
     }
 
     .skill-card h3 {
-      font-family: 'Orbitron', monospace;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--purple);
+      font-family: 'Permanent Marker', cursive;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--blood-light);
       letter-spacing: 1px;
     }
 
@@ -706,21 +783,22 @@
       backdrop-filter: blur(14px);
       border: 1px solid var(--glass-border);
       padding: 13px 34px;
-      border-radius: 40px;
+      border-radius: 0;
       color: var(--text-primary);
       text-decoration: none;
       font-weight: 600;
       font-size: 13px;
-      font-family: 'Orbitron', monospace;
+      font-family: 'Permanent Marker', cursive;
       letter-spacing: 1px;
       transition: all 0.3s;
+      text-transform: uppercase;
     }
 
     .contact-links a:hover {
-      box-shadow: 0 8px 24px var(--purple-glow);
+      box-shadow: 0 8px 24px var(--blood-glow);
       transform: translateY(-2px);
-      border-color: var(--purple);
-      color: var(--purple);
+      border-color: var(--blood);
+      color: var(--blood-light);
     }
 
     .footer {
@@ -729,7 +807,7 @@
       color: var(--text-muted);
       font-size: 12px;
       border-top: 1px solid rgba(255, 255, 255, 0.04);
-      font-family: 'Orbitron', monospace;
+      font-family: 'Permanent Marker', cursive;
       letter-spacing: 2px;
     }
 
@@ -750,7 +828,7 @@
       }
 
       .hero h1 {
-        font-size: 36px;
+        font-size: 38px;
       }
 
       .profile-wrapper {
@@ -782,10 +860,10 @@
       }
 
       .section-title {
-        font-size: 22px;
+        font-size: 24px;
       }
 
-      .featured-grid {
+      .project-grid {
         grid-template-columns: 1fr;
       }
 
@@ -817,25 +895,35 @@
       .profile-status-item .emoji {
         font-size: 18px;
       }
+
+      .logo {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
 <body>
 
   <!-- ===== FUNDO ===== -->
-  <div class="bg-scene" id="bgScene"></div>
+  <div class="bg-scene"></div>
+  <div class="wall-texture"></div>
 
-  <!-- ===== SCANLINE ===== -->
-  <div class="scanline"></div>
+  <!-- Respingos de tinta -->
+  <div class="splatter splatter-1"></div>
+  <div class="splatter splatter-2"></div>
+  <div class="splatter splatter-3"></div>
 
-  <!-- ===== CONTEÚDO ===== -->
+  <!-- Correntes -->
+  <div class="chain chain-1"></div>
+  <div class="chain chain-2"></div>
+
   <div class="container">
 
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar">
       <span class="logo">
         SHANTEL
-        <span class="logo-sub">✦ PORTFÓLIO</span>
+        <span class="logo-sub">✦ GACHIAKUTA</span>
       </span>
       <ul>
         <li><a href="#home">Home</a></li>
@@ -847,15 +935,16 @@
       </ul>
     </nav>
 
-    <!-- ===== HOME / HERO ===== -->
+    <!-- ===== HOME ===== -->
     <section id="home">
       <div class="hero-wrapper">
         <div class="hero">
-          <h1>SHANTEL</h1>
+          <h1><span>✦</span> SHANTEL</h1>
           <p class="subtitle">Design · Dev · <span>Community</span></p>
           <p>
             Crio identidades visuais, desenvolvo bots e organizo comunidades
             para transformar servidores em ecossistemas vibrantes e funcionais.
+            <span style="color: var(--blood);">◆</span>
           </p>
           <a href="#projects" class="btn">Ver Projetos →</a>
         </div>
@@ -865,7 +954,7 @@
               src="https://www.image2url.com/r2/default/images/1787348263074-d4961ac6-d5d0-4147-9469-458ec70fa1ff.jpg"
               alt="Shantel"
               class="hero-avatar"
-              onerror="this.src='https://via.placeholder.com/200/12121a/7c3aed?text=Shantel'"
+              onerror="this.src='https://via.placeholder.com/200/14100e/8b0000?text=Shantel'"
             />
             <span class="status-dot" id="statusDot" title="Status no Discord"></span>
           </div>
@@ -880,16 +969,16 @@
       </div>
     </section>
 
-    <!-- ===== PROJETOS EM DESTAQUE (MOST POPULAR) ===== -->
+    <!-- ===== PROJETOS ===== -->
     <section id="projects">
-      <h2 class="section-title">✦ MOST POPULAR</h2>
-      <div class="featured-grid">
+      <h2 class="section-title">✦ PROJETOS</h2>
+      <div class="project-grid">
 
-        <div class="featured-card">
+        <div class="project-card">
           <span class="card-badge">★ Destaque</span>
-          <span class="card-rating">⭐ 9.2</span>
+          <span class="card-rating">✦ 9.2</span>
           <img
-            src="https://via.placeholder.com/400x200/1a1a2e/7c3aed?text=Projeto+1"
+            src="https://via.placeholder.com/400x200/14100e/8b0000?text=Projeto+1"
             alt="Projeto 1"
             class="card-image"
             onerror="this.style.display='none'"
@@ -897,15 +986,15 @@
           <div class="card-info">
             <span class="card-tag">Design · UI/UX</span>
             <h3>Identidade Visual</h3>
-            <p>Projeto de branding completo para comunidade no Discord.</p>
+            <p>Branding completo para comunidade no Discord com estilo urbano.</p>
           </div>
         </div>
 
-        <div class="featured-card">
+        <div class="project-card">
           <span class="card-badge">★ Destaque</span>
-          <span class="card-rating">⭐ 8.7</span>
+          <span class="card-rating">✦ 8.7</span>
           <img
-            src="https://via.placeholder.com/400x200/1a1a2e/ec4899?text=Projeto+2"
+            src="https://via.placeholder.com/400x200/14100e/b31b1b?text=Projeto+2"
             alt="Projeto 2"
             class="card-image"
             onerror="this.style.display='none'"
@@ -917,11 +1006,11 @@
           </div>
         </div>
 
-        <div class="featured-card">
-          <span class="card-badge">★ Novo</span>
-          <span class="card-rating">⭐ 8.4</span>
+        <div class="project-card">
+          <span class="card-badge">✦ Novo</span>
+          <span class="card-rating">✦ 8.4</span>
           <img
-            src="https://via.placeholder.com/400x200/1a1a2e/3b82f6?text=Projeto+3"
+            src="https://via.placeholder.com/400x200/14100e/6a5a50?text=Projeto+3"
             alt="Projeto 3"
             class="card-image"
             onerror="this.style.display='none'"
@@ -929,14 +1018,14 @@
           <div class="card-info">
             <span class="card-tag">Design · Banners</span>
             <h3>Banners e Artes</h3>
-            <p>Criação de artes para redes sociais e eventos.</p>
+            <p>Criação de artes para redes sociais e eventos com estilo graffiti.</p>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ===== PERFIL DE PERSONAGEM (estilo Acti) ===== -->
+    <!-- ===== PERFIL ===== -->
     <section id="profile">
       <h2 class="section-title">✦ PERFIL</h2>
       <div class="profile-wrapper">
@@ -945,19 +1034,19 @@
             src="https://www.image2url.com/r2/default/images/1787348600131-957c697b-4e31-4d40-bd5e-f1b336dfbf5b.jpg"
             alt="Shantel"
             class="profile-avatar"
-            onerror="this.src='https://via.placeholder.com/180/12121a/7c3aed?text=Shantel'"
+            onerror="this.src='https://via.placeholder.com/180/14100e/8b0000?text=Shantel'"
           />
           <div class="profile-name">SHANTEL</div>
           <div class="profile-handle">@shantel · criadora</div>
 
           <div class="profile-status-grid">
             <div class="profile-status-item">
-              <span class="emoji">🌸</span>
-              <span class="label">tierna</span>
+              <span class="emoji">🎨</span>
+              <span class="label">criando</span>
             </div>
             <div class="profile-status-item">
-              <span class="emoji">🍜</span>
-              <span class="label">comiendo</span>
+              <span class="emoji">🎵</span>
+              <span class="label">ouvindo</span>
             </div>
             <div class="profile-status-item">
               <span class="emoji">💻</span>
@@ -967,7 +1056,7 @@
         </div>
 
         <div class="profile-bio">
-          <h3>✦ Sobre</h3>
+          <h3>✦ SOBRE <span>MIM</span></h3>
           <p>
             Sou a <strong>Shantel</strong>, criadora multifacetada que une design visual,
             desenvolvimento de bots e gestão de comunidades. Tenho 16 anos, moro em Portugal
@@ -975,7 +1064,7 @@
           </p>
           <p>
             Quando não estou codando, me encontro fazendo fanarts, ouvindo música ou
-            maratonando séries. <span style="color: var(--pink);">:3</span>
+            maratonando séries. <span style="color: var(--blood);">:3</span>
           </p>
 
           <div class="tags">
@@ -983,7 +1072,7 @@
             <span class="tag">⚙️ Dev</span>
             <span class="tag">👑 Gestão</span>
             <span class="tag">🤖 Bots</span>
-            <span class="tag">🌸 Fanarts</span>
+            <span class="tag">✦ Gachiakuta</span>
           </div>
 
           <div class="profile-actions">
@@ -995,9 +1084,9 @@
       </div>
     </section>
 
-    <!-- ===== EXPERIÊNCIA (STAFF) ===== -->
+    <!-- ===== EXPERIÊNCIA ===== -->
     <section id="experience">
-      <h2 class="section-title">✦ STAFF · COMUNIDADES</h2>
+      <h2 class="section-title">✦ STAFF</h2>
       <div class="exp-grid">
         <div class="exp-card">
           <h3>Turquia</h3>
@@ -1007,7 +1096,7 @@
         <div class="exp-card">
           <h3>Pureza</h3>
           <p class="exp-tag">Eventos · Equipe Social</p>
-          <p>Criação de eventos, gestão de entrada de membros e manutenção do fluxo da comunidade.</p>
+          <p>Criação de eventos, gestão de entrada de membros e manutenção do fluxo.</p>
         </div>
         <div class="exp-card">
           <h3>Cidadela da Hayley</h3>
@@ -1017,12 +1106,12 @@
         <div class="exp-card">
           <h3>Mazul</h3>
           <p class="exp-tag">Sub Owner · Dev · Promotora</p>
-          <p>Deveres de administração, organização de tarefas e bot Maker.</p>
+          <p>Administração, organização de tarefas e bot Maker.</p>
         </div>
         <div class="exp-card">
           <h3>aOrdem</h3>
           <p class="exp-tag">Mov Call / Chat · Passtime</p>
-          <p>Deveres de administração, organização de tarefas e bot Maker.</p>
+          <p>Administração, organização de tarefas e bot Maker.</p>
         </div>
       </div>
     </section>
@@ -1059,34 +1148,19 @@
       <h2 class="section-title section-title-center">✦ CONTATO</h2>
       <div class="contact-links">
         <a href="mailto:equipeyezzy@outlook.com" target="_blank">✉ Email</a>
-        <a href="https://discord.com/users/1366621726611607553" target="_blank">◆ Discord</a>
+        <a href="https://discord.com/users/1366621726611607553" target="_blank">✦ Discord</a>
         <a href="https://instagram.com/ireiperdoar" target="_blank">✦ Instagram</a>
       </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <div class="footer">
-      © 2026 SHANTEL · Feito com ❤️ · ✦ ANIME STYLE ✦
+      © 2026 SHANTEL · ✦ GACHIAKUTA × GRAFFITI ✦
     </div>
 
   </div>
 
   <script>
-    // ===== PARTÍCULAS =====
-    const bgScene = document.getElementById('bgScene');
-    for (let i = 0; i < 45; i++) {
-      const p = document.createElement('div');
-      p.className = 'particle';
-      p.style.left = Math.random() * 100 + '%';
-      p.style.top = Math.random() * 100 + '%';
-      p.style.animationDuration = (10 + Math.random() * 20) + 's';
-      p.style.animationDelay = (Math.random() * 12) + 's';
-      p.style.width = (1 + Math.random() * 3) + 'px';
-      p.style.height = p.style.width;
-      p.style.opacity = 0.05 + Math.random() * 0.15;
-      bgScene.appendChild(p);
-    }
-
     // ===== STATUS DISCORD =====
     const DISCORD_ID = '1366621726611607553';
 
@@ -1100,8 +1174,8 @@
     const statusColors = {
       online: '#57d68d',
       idle: '#faa61a',
-      dnd: '#ec4899',
-      offline: '#6a6280'
+      dnd: '#8b0000',
+      offline: '#6a5a50'
     };
 
     async function loadDiscordStatus() {
