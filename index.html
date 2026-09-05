@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yezzy · Amo Empool · Gachiakuta</title>
+  <title>Shantel · Portfólio Anime</title>
 
-  <!-- Favicon: Olho da Amo -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231a1a1a'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23f5f0e8'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%238b0000'/%3E%3Ccircle cx='50' cy='50' r='6' fill='%231a1a1a'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230d0d0d'/%3E%3Ctext x='50%25' y='68%25' font-size='60' text-anchor='middle' fill='%23b388eb'%3E✦%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -24,24 +23,27 @@
     }
 
     :root {
-      --bg-dark: #0d0d0d;
-      --bg-card: #1a1a1a;
-      --text-light: #f5f0e8;
-      --text-muted: #a89890;
-      --blood: #8b0000;
-      --blood-light: #b31b1b;
-      --blood-glow: rgba(139, 0, 0, 0.4);
-      --purple-dark: #2a1a3a;
-      --white-smoke: #f5f0e8;
-      --glass: rgba(26, 26, 26, 0.75);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --shadow-glow: 0 8px 32px rgba(139, 0, 0, 0.25);
+      --bg-dark: #0a0a0f;
+      --bg-card: #12121a;
+      --bg-card-hover: #1a1a2e;
+      --text-primary: #f0ecf5;
+      --text-secondary: #a8a0b8;
+      --text-muted: #6a6280;
+      --purple: #7c3aed;
+      --purple-glow: rgba(124, 58, 237, 0.3);
+      --pink: #ec4899;
+      --pink-glow: rgba(236, 72, 153, 0.25);
+      --blue: #3b82f6;
+      --blue-glow: rgba(59, 130, 246, 0.2);
+      --glass: rgba(18, 18, 26, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.06);
+      --shadow-glow: 0 8px 32px rgba(124, 58, 237, 0.15);
     }
 
     body {
-      font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
+      font-family: 'Quicksand', system-ui, sans-serif;
       background: var(--bg-dark);
-      color: var(--text-light);
+      color: var(--text-primary);
       line-height: 1.7;
       overflow-x: hidden;
       min-height: 100vh;
@@ -51,13 +53,12 @@
       font-family: 'Baloo 2', sans-serif;
     }
 
-    .blood-text {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      color: var(--blood);
+    .anime-font {
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 2px;
     }
 
-    /* ===== FUNDO COM TEXTURA E PARTÍCULAS ===== */
+    /* ===== FUNDO COM GRID E GRADIENTE ===== */
     .bg-scene {
       position: fixed;
       inset: 0;
@@ -65,17 +66,27 @@
       z-index: 0;
       overflow: hidden;
       background:
-        radial-gradient(ellipse at 20% 50%, rgba(139, 0, 0, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 80%, rgba(42, 26, 58, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 30%, rgba(124, 58, 237, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 70%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
         var(--bg-dark);
     }
 
-    /* Partículas flutuantes (poeira/cinzas) */
+    .bg-scene::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ===== PARTÍCULAS ===== */
     .particle {
       position: absolute;
-      width: 3px;
-      height: 3px;
-      background: rgba(245, 240, 232, 0.15);
+      width: 2px;
+      height: 2px;
+      background: rgba(124, 58, 237, 0.2);
       border-radius: 50%;
       animation: float-particle linear infinite;
     }
@@ -87,39 +98,18 @@
       100% { transform: translateY(-100vh) translateX(40px) scale(0.3); opacity: 0; }
     }
 
-    /* Correntes decorativas (CSS puro) */
-    .chain {
+    /* ===== SCANLINE (efeito anime) ===== */
+    .scanline {
       position: fixed;
+      inset: 0;
       pointer-events: none;
-      z-index: 0;
-      opacity: 0.12;
-    }
-
-    .chain-1 {
-      top: 0;
-      right: 20px;
-      width: 2px;
-      height: 100vh;
+      z-index: 999;
       background: repeating-linear-gradient(
-        to bottom,
-        var(--text-muted) 0px,
-        var(--text-muted) 8px,
-        transparent 8px,
-        transparent 16px
-      );
-    }
-
-    .chain-2 {
-      bottom: 0;
-      left: 40px;
-      width: 40%;
-      height: 2px;
-      background: repeating-linear-gradient(
-        to right,
-        var(--text-muted) 0px,
-        var(--text-muted) 8px,
-        transparent 8px,
-        transparent 16px
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
       );
     }
 
@@ -141,70 +131,49 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .navbar .logo {
-      font-size: 30px;
-      font-weight: 600;
-      color: var(--blood);
-      text-shadow: 0 0 20px var(--blood-glow);
-    }
-
-    .logo-cat {
-      display: inline-block;
-      width: 54px;
-      height: 42px;
+    .logo {
+      font-size: 32px;
+      font-weight: 800;
+      font-family: 'Orbitron', monospace;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-shadow: none;
+      letter-spacing: 4px;
     }
 
-    .logo-cat svg {
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-    }
-
-    .cat-eye {
-      transform-origin: center;
-      animation: cat-blink 4.5s ease-in-out infinite;
-    }
-
-    .cat-eye:nth-child(6) {
-      animation-delay: 0.05s;
-    }
-
-    @keyframes cat-blink {
-      0%, 92%, 100% { transform: scaleY(1); }
-      95% { transform: scaleY(0.1); }
-    }
-
-    .cat-tail {
-      transform-origin: 78px 40px;
-      animation: cat-wag 2.4s ease-in-out infinite;
-    }
-
-    @keyframes cat-wag {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(-10deg); }
+    .logo-sub {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 6px;
+      -webkit-text-fill-color: var(--text-muted);
+      display: block;
+      font-weight: 400;
     }
 
     .navbar ul {
       display: flex;
-      gap: 26px;
+      gap: 28px;
       list-style: none;
       flex-wrap: wrap;
     }
 
     .navbar ul a {
-      color: var(--text-muted);
+      color: var(--text-secondary);
       text-decoration: none;
       font-size: 13px;
       font-weight: 600;
       transition: color 0.3s, text-shadow 0.3s;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
       text-transform: uppercase;
+      font-family: 'Orbitron', monospace;
+      font-size: 11px;
     }
 
     .navbar ul a:hover {
-      color: var(--blood-light);
-      text-shadow: 0 0 12px var(--blood-glow);
+      color: var(--purple);
+      text-shadow: 0 0 20px var(--purple-glow);
     }
 
     /* ===== STATUS DISCORD ===== */
@@ -215,12 +184,12 @@
 
     .status-dot {
       position: absolute;
-      bottom: 10px;
-      right: 10px;
-      width: 22px;
-      height: 22px;
+      bottom: 8px;
+      right: 8px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
-      border: 4px solid var(--bg-dark);
+      border: 3px solid var(--bg-dark);
       background: var(--text-muted);
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
       transition: background 0.3s;
@@ -233,7 +202,6 @@
       gap: 10px;
       background: var(--glass);
       backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--glass-border);
       border-radius: 40px;
       padding: 8px 18px 8px 8px;
@@ -258,12 +226,12 @@
     .discord-live-name {
       font-size: 13px;
       font-weight: 700;
-      color: var(--text-light);
+      color: var(--text-primary);
     }
 
     .discord-live-status {
       font-size: 11px;
-      color: var(--text-muted);
+      color: var(--text-secondary);
     }
 
     /* ===== SEÇÕES ===== */
@@ -272,20 +240,33 @@
     }
 
     .section-title {
-      font-size: 30px;
-      font-weight: 600;
-      color: var(--text-light);
+      font-size: 28px;
+      font-weight: 700;
+      font-family: 'Orbitron', monospace;
+      color: var(--text-primary);
       margin-bottom: 30px;
       position: relative;
-      padding-left: 20px;
+      letter-spacing: 2px;
     }
 
-    .section-title::before {
-      content: '◆';
+    .section-title::after {
+      content: '';
       position: absolute;
+      bottom: -8px;
       left: 0;
-      color: var(--blood);
-      font-size: 18px;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      border-radius: 4px;
+    }
+
+    .section-title-center {
+      text-align: center;
+    }
+
+    .section-title-center::after {
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     /* ===== HOME / HERO ===== */
@@ -307,372 +288,409 @@
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      border: 3px solid var(--blood);
-      box-shadow: 0 0 40px var(--blood-glow), 0 0 80px rgba(139, 0, 0, 0.1);
+      border: 3px solid var(--purple);
+      box-shadow: 0 0 40px var(--purple-glow), 0 0 80px rgba(124, 58, 237, 0.05);
       object-fit: cover;
       background: var(--bg-card);
-      filter: grayscale(0.2) contrast(1.1);
     }
 
     .hero h1 {
-      font-size: 46px;
-      font-weight: 600;
-      color: var(--text-light);
+      font-size: 52px;
+      font-weight: 800;
+      font-family: 'Orbitron', monospace;
+      background: linear-gradient(135deg, var(--purple), var(--pink), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 4px;
     }
 
     .hero .subtitle {
-      font-size: 18px;
-      color: var(--blood-light);
+      font-size: 16px;
+      color: var(--text-secondary);
       font-weight: 600;
       margin: 6px 0 14px;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-family: 'Orbitron', monospace;
+      font-size: 12px;
+    }
+
+    .hero .subtitle span {
+      color: var(--pink);
+      -webkit-text-fill-color: var(--pink);
     }
 
     .hero p {
-      color: var(--text-muted);
+      color: var(--text-secondary);
       max-width: 480px;
       font-size: 15px;
     }
 
     .btn {
       display: inline-block;
-      background: linear-gradient(135deg, var(--blood), var(--blood-light));
+      background: linear-gradient(135deg, var(--purple), var(--pink));
       color: #fff;
-      padding: 13px 36px;
+      padding: 14px 40px;
       border-radius: 40px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 13px;
       margin-top: 22px;
       transition: transform 0.2s, box-shadow 0.3s;
-      box-shadow: 0 6px 24px var(--blood-glow);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 6px 24px var(--purple-glow);
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 1px;
     }
 
     .btn:hover {
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 10px 40px var(--blood-glow);
+      box-shadow: 0 10px 40px var(--purple-glow);
     }
 
-    /* ===== SOBRE ===== */
-    .about-wrapper {
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--purple);
+      box-shadow: none;
+      color: var(--text-primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--purple);
+      color: #fff;
+      box-shadow: 0 6px 24px var(--purple-glow);
+    }
+
+    /* ===== PROJETOS EM DESTAQUE (MOST POPULAR) ===== */
+    .featured-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
     }
 
-    .about-text p {
-      color: var(--text-muted);
-      font-size: 15px;
-      margin-bottom: 16px;
-    }
-
-    .about-text strong {
-      color: var(--blood-light);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .stat-box {
-      background: var(--glass);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+    .featured-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      overflow: hidden;
       border: 1px solid var(--glass-border);
-      border-radius: 18px;
-      padding: 16px;
-      text-align: center;
-      box-shadow: var(--shadow-glow);
-    }
-
-    .stat-box .number {
-      font-size: 24px;
-      font-weight: 700;
-      font-family: 'Baloo 2', sans-serif;
-      color: var(--blood-light);
-    }
-
-    .stat-box .label {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .philosophy-box {
-      background: var(--glass);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--glass-border);
-      border-radius: 18px;
-      padding: 16px 20px;
-      margin-top: 12px;
-      box-shadow: var(--shadow-glow);
-    }
-
-    .philosophy-box h3 {
-      color: var(--blood-light);
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .philosophy-box p {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-top: 3px;
-    }
-
-    .about-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
       position: relative;
     }
 
-    .gear-avatar-big {
-      position: relative;
-      width: 380px;
-      height: 380px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .featured-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px var(--purple-glow);
+      border-color: rgba(124, 58, 237, 0.3);
     }
 
-    .gear-avatar-big::before {
-      content: '';
-      position: absolute;
-      inset: 20px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(139, 0, 0, 0.15), transparent 70%);
-      filter: blur(10px);
-    }
-
-    .gear-avatar-big img {
-      position: relative;
-      z-index: 1;
+    .featured-card .card-image {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 12px 40px var(--blood-glow));
+      height: 200px;
+      object-fit: cover;
+      background: var(--bg-card);
+      display: block;
     }
 
-    /* ===== PESSOAL ===== */
-    .personal-wrapper {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 40px;
-      align-items: center;
+    .featured-card .card-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 1px;
+    }
+
+    .featured-card .card-rating {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fbbf24;
+      font-family: 'Orbitron', monospace;
+    }
+
+    .featured-card .card-info {
+      padding: 20px 22px 24px;
+    }
+
+    .featured-card .card-info h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: 'Baloo 2', sans-serif;
+    }
+
+    .featured-card .card-info .card-tag {
+      font-size: 11px;
+      color: var(--purple);
+      font-weight: 700;
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .featured-card .card-info p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+
+    /* ===== PERFIL DE PERSONAGEM (estilo Acti) ===== */
+    .profile-wrapper {
       background: var(--glass);
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-radius: 28px;
-      padding: 44px;
       border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 40px 44px;
       box-shadow: var(--shadow-glow);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      align-items: start;
     }
 
-    .personal-text p {
+    .profile-avatar-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .profile-avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--purple);
+      box-shadow: 0 0 40px var(--purple-glow);
+      background: var(--bg-card);
+    }
+
+    .profile-name {
+      font-size: 28px;
+      font-weight: 800;
+      font-family: 'Orbitron', monospace;
+      margin-top: 16px;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .profile-handle {
+      font-size: 13px;
       color: var(--text-muted);
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 2px;
+    }
+
+    .profile-status-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+      width: 100%;
+    }
+
+    .profile-status-item {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 10px 6px;
+      text-align: center;
+      border: 1px solid var(--glass-border);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .profile-status-item:hover {
+      border-color: var(--purple);
+      box-shadow: 0 0 20px var(--purple-glow);
+    }
+
+    .profile-status-item .emoji {
+      font-size: 22px;
+      display: block;
+    }
+
+    .profile-status-item .label {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .profile-bio h3 {
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'Orbitron', monospace;
+      color: var(--text-primary);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .profile-bio p {
+      color: var(--text-secondary);
       font-size: 15px;
       margin-bottom: 16px;
     }
 
-    .personal-text strong {
-      color: var(--blood-light);
-    }
-
-    .personal-tags {
+    .profile-bio .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 20px;
     }
 
-    .personal-tags .tag {
-      background: rgba(139, 0, 0, 0.15);
-      border: 1px solid rgba(139, 0, 0, 0.3);
+    .profile-bio .tag {
+      background: rgba(124, 58, 237, 0.12);
+      border: 1px solid rgba(124, 58, 237, 0.2);
       padding: 6px 16px;
       border-radius: 30px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      color: var(--text-light);
+      color: var(--text-secondary);
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 0.5px;
     }
 
-    .personal-image {
+    .profile-bio .tag:hover {
+      border-color: var(--purple);
+      color: var(--text-primary);
+    }
+
+    .profile-actions {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
     }
 
-    .personal-foto {
-      width: 100%;
-      max-width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--blood);
-      box-shadow: 0 8px 30px var(--blood-glow), 0 0 0 4px rgba(139, 0, 0, 0.15);
-      background: var(--bg-card);
-      filter: grayscale(0.2) contrast(1.1);
+    .profile-actions .btn-small {
+      padding: 10px 28px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: 1px solid var(--glass-border);
+      color: var(--text-secondary);
+      background: transparent;
     }
 
-    /* ===== CARDS (Experiência) ===== */
-    .card-grid {
+    .profile-actions .btn-small:hover {
+      border-color: var(--purple);
+      color: var(--text-primary);
+      box-shadow: 0 0 20px var(--purple-glow);
+    }
+
+    .profile-actions .btn-small.primary {
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: #fff;
+      border: none;
+    }
+
+    .profile-actions .btn-small.primary:hover {
+      box-shadow: 0 6px 24px var(--purple-glow);
+      transform: translateY(-2px);
+    }
+
+    /* ===== EXPERIÊNCIA ===== */
+    .exp-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
     }
 
-    .card {
+    .exp-card {
       background: var(--glass);
       backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--glass-border);
-      border-radius: 22px;
-      overflow: hidden;
-      transition: transform 0.25s, box-shadow 0.25s;
+      border-radius: 18px;
+      padding: 24px;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
       box-shadow: var(--shadow-glow);
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px var(--blood-glow);
-      border-color: rgba(139, 0, 0, 0.3);
+    .exp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 34px var(--purple-glow);
+      border-color: rgba(124, 58, 237, 0.2);
     }
 
-    .card .info {
-      padding: 22px;
-    }
-
-    .card .info h3 {
-      font-size: 19px;
-      font-weight: 600;
-      color: var(--text-light);
-    }
-
-    .card .info .tag {
-      font-size: 12px;
-      color: var(--blood-light);
+    .exp-card h3 {
+      font-size: 18px;
       font-weight: 700;
+      color: var(--text-primary);
+      font-family: 'Baloo 2', sans-serif;
     }
 
-    .card .info .desc {
+    .exp-card .exp-tag {
+      font-size: 11px;
+      color: var(--pink);
+      font-weight: 700;
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .exp-card p {
       font-size: 14px;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       margin-top: 6px;
     }
 
     /* ===== SKILLS ===== */
     .skill-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
     }
 
     .skill-card {
       background: var(--glass);
       backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 26px;
+      border-radius: 18px;
+      padding: 24px 20px;
       text-align: center;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
       box-shadow: var(--shadow-glow);
-      transition: transform 0.25s, border-color 0.3s;
     }
 
     .skill-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(139, 0, 0, 0.3);
+      border-color: rgba(124, 58, 237, 0.3);
+      box-shadow: 0 8px 30px var(--purple-glow);
     }
 
     .skill-card .icon {
-      font-size: 36px;
+      font-size: 34px;
       display: block;
       margin-bottom: 10px;
     }
 
     .skill-card h3 {
-      color: var(--blood-light);
-      font-size: 16px;
-      font-weight: 600;
+      font-family: 'Orbitron', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--purple);
+      letter-spacing: 1px;
     }
 
     .skill-card p {
-      color: var(--text-muted);
-      font-size: 13px;
-      margin-top: 4px;
-    }
-
-    /* ===== SERVIDORES ===== */
-    .servers-intro {
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      font-size: 14px;
-    }
-
-    .server-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .server-card {
-      background: var(--glass);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 22px;
-      box-shadow: var(--shadow-glow);
-      transition: border-color 0.3s;
-    }
-
-    .server-card:hover {
-      border-color: rgba(139, 0, 0, 0.3);
-    }
-
-    .server-badge {
-      display: inline-block;
-      background: rgba(139, 0, 0, 0.15);
-      border: 1px solid rgba(139, 0, 0, 0.3);
-      color: var(--blood-light);
+      color: var(--text-secondary);
       font-size: 12px;
-      font-weight: 700;
-      padding: 5px 14px;
-      border-radius: 30px;
-      margin-bottom: 10px;
-    }
-
-    .server-card h3 {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 6px;
-    }
-
-    .server-card p {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    .server-btn {
-      display: inline-block;
-      margin-top: 12px;
-      color: var(--blood-light);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 13px;
-      transition: color 0.3s;
-    }
-
-    .server-btn:hover {
-      color: var(--text-light);
-      text-shadow: 0 0 12px var(--blood-glow);
+      margin-top: 4px;
     }
 
     /* ===== CONTATO ===== */
@@ -686,30 +704,33 @@
     .contact-links a {
       background: var(--glass);
       backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--glass-border);
       padding: 13px 34px;
       border-radius: 40px;
-      color: var(--text-light);
+      color: var(--text-primary);
       text-decoration: none;
       font-weight: 600;
-      font-size: 14px;
-      transition: box-shadow 0.3s, transform 0.2s, border-color 0.3s;
+      font-size: 13px;
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 1px;
+      transition: all 0.3s;
     }
 
     .contact-links a:hover {
-      box-shadow: 0 8px 24px var(--blood-glow);
+      box-shadow: 0 8px 24px var(--purple-glow);
       transform: translateY(-2px);
-      border-color: rgba(139, 0, 0, 0.3);
-      color: var(--blood-light);
+      border-color: var(--purple);
+      color: var(--purple);
     }
 
     .footer {
       text-align: center;
       padding: 30px 0 24px;
       color: var(--text-muted);
-      font-size: 13px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 2px;
     }
 
     /* ===== RESPONSIVO ===== */
@@ -728,33 +749,26 @@
         max-width: 100%;
       }
 
-      .about-wrapper {
-        grid-template-columns: 1fr;
-        gap: 32px;
+      .hero h1 {
+        font-size: 36px;
       }
 
-      .about-image {
-        order: -1;
-      }
-
-      .gear-avatar-big {
-        width: 260px;
-        height: 260px;
-      }
-
-      .personal-wrapper {
+      .profile-wrapper {
         grid-template-columns: 1fr;
         padding: 28px;
         text-align: center;
       }
 
-      .personal-tags {
+      .profile-status-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .profile-actions {
         justify-content: center;
       }
 
-      .personal-foto {
-        max-width: 180px;
-        height: 180px;
+      .profile-bio .tags {
+        justify-content: center;
       }
 
       .navbar {
@@ -768,40 +782,40 @@
       }
 
       .section-title {
-        font-size: 24px;
+        font-size: 22px;
       }
 
-      .hero h1 {
-        font-size: 32px;
+      .featured-grid {
+        grid-template-columns: 1fr;
       }
 
-      .chain-1, .chain-2 {
-        display: none;
+      .profile-avatar {
+        width: 140px;
+        height: 140px;
       }
     }
 
     @media (max-width: 480px) {
-      .gear-avatar-big {
-        width: 200px;
-        height: 200px;
-      }
-
       .hero-avatar {
         width: 150px;
         height: 150px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr 1fr;
       }
 
       .container {
         padding: 0 16px;
       }
 
-      .personal-foto {
-        max-width: 150px;
-        height: 150px;
+      .profile-wrapper {
+        padding: 20px;
+      }
+
+      .profile-status-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+
+      .profile-status-item .emoji {
+        font-size: 18px;
       }
     }
   </style>
@@ -811,39 +825,24 @@
   <!-- ===== FUNDO ===== -->
   <div class="bg-scene" id="bgScene"></div>
 
-  <!-- ===== CORRENTES ===== -->
-  <div class="chain chain-1"></div>
-  <div class="chain chain-2"></div>
+  <!-- ===== SCANLINE ===== -->
+  <div class="scanline"></div>
 
   <!-- ===== CONTEÚDO ===== -->
   <div class="container">
 
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar">
-      <span class="logo logo-cat" aria-label="Yezzy">
-        <svg viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
-          <path class="cat-tail" d="M 78 55 Q 95 50 90 30 Q 88 20 78 22" fill="none" stroke="#8b0000" stroke-width="6" stroke-linecap="round"/>
-          <ellipse cx="42" cy="42" rx="26" ry="22" fill="#2a1a3a"/>
-          <path d="M 22 26 L 16 8 L 34 20 Z" fill="#2a1a3a"/>
-          <path d="M 62 26 L 68 8 L 50 20 Z" fill="#2a1a3a"/>
-          <path d="M 24 22 L 21 12 L 30 19 Z" fill="#8b0000"/>
-          <path d="M 60 22 L 63 12 L 54 19 Z" fill="#8b0000"/>
-          <ellipse class="cat-eye" cx="33" cy="40" rx="4" ry="5" fill="#f5f0e8"/>
-          <ellipse class="cat-eye" cx="51" cy="40" rx="4" ry="5" fill="#f5f0e8"/>
-          <path d="M 42 47 L 39 50 L 45 50 Z" fill="#8b0000"/>
-          <line x1="12" y1="44" x2="26" y2="42" stroke="#8b0000" stroke-width="1.5"/>
-          <line x1="12" y1="50" x2="26" y2="48" stroke="#8b0000" stroke-width="1.5"/>
-          <line x1="58" y1="42" x2="72" y2="44" stroke="#8b0000" stroke-width="1.5"/>
-          <line x1="58" y1="48" x2="72" y2="50" stroke="#8b0000" stroke-width="1.5"/>
-        </svg>
+      <span class="logo">
+        SHANTEL
+        <span class="logo-sub">✦ PORTFÓLIO</span>
       </span>
       <ul>
         <li><a href="#home">Home</a></li>
-        <li><a href="#about">Sobre</a></li>
-        <li><a href="#personal">Pessoal</a></li>
-        <li><a href="#experience">Experiência</a></li>
+        <li><a href="#projects">Projetos</a></li>
+        <li><a href="#profile">Perfil</a></li>
+        <li><a href="#experience">Staff</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#servers">Servidores</a></li>
         <li><a href="#contact">Contato</a></li>
       </ul>
     </nav>
@@ -852,22 +851,21 @@
     <section id="home">
       <div class="hero-wrapper">
         <div class="hero">
-          <h1>Yezzy</h1>
-          <p class="subtitle">"Assim como Amo Empool, transformo caos em arte"</p>
+          <h1>SHANTEL</h1>
+          <p class="subtitle">Design · Dev · <span>Community</span></p>
           <p>
             Crio identidades visuais, desenvolvo bots e organizo comunidades
             para transformar servidores em ecossistemas vibrantes e funcionais.
-            <span class="blood-text">◆</span> Design · Dev · Community Manager
           </p>
-          <a href="#contact" class="btn">Vamos conversar →</a>
+          <a href="#projects" class="btn">Ver Projetos →</a>
         </div>
         <div class="hero-image">
           <div class="hero-avatar-wrap">
             <img
               src="https://www.image2url.com/r2/default/images/1787348263074-d4961ac6-d5d0-4147-9469-458ec70fa1ff.jpg"
-              alt="Yezzy"
+              alt="Shantel"
               class="hero-avatar"
-              onerror="this.src='https://via.placeholder.com/200/1a1a1a/8b0000?text=Yezzy'"
+              onerror="this.src='https://via.placeholder.com/200/12121a/7c3aed?text=Shantel'"
             />
             <span class="status-dot" id="statusDot" title="Status no Discord"></span>
           </div>
@@ -882,223 +880,193 @@
       </div>
     </section>
 
-    <!-- ===== SOBRE (PROFISSIONAL) ===== -->
-    <section id="about">
-      <h2 class="section-title">Sobre Mim</h2>
-      <div class="about-wrapper">
-        <div class="about-text">
-          <p>
-            Sou <strong>Yezzy</strong>, uma criadora multifacetada que une
-            design visual, desenvolvimento de bots e gestão de comunidades.
-            Minha trajetória inclui desde a criação de identidades visuais completas
-            até a automação com bots e organização de eventos que engajam milhares de pessoas.
-          </p>
-          <div class="stats">
-            <div class="stat-box">
-              <div class="number">3+</div>
-              <div class="label">Anos de experiência</div>
-            </div>
-            <div class="stat-box">
-              <div class="number">5+</div>
-              <div class="label">Comunidades geridas</div>
-            </div>
-            <div class="stat-box">
-              <div class="number">10+</div>
-              <div class="label">Projetos</div>
-            </div>
-            <div class="stat-box">
-              <div class="number">24/7</div>
-              <div class="label">Dedicação</div>
-            </div>
-          </div>
-          <div class="philosophy-box">
-            <h3>Minha Filosofia</h3>
-            <p>Unir inspiração tradicional com tendências modernas para criar experiências únicas e de alta performance.</p>
-          </div>
-          <div class="philosophy-box">
-            <h3>Minha Missão</h3>
-            <p>Transformar ideias complexas em interfaces limpas, responsivas e que encantam os usuários.</p>
+    <!-- ===== PROJETOS EM DESTAQUE (MOST POPULAR) ===== -->
+    <section id="projects">
+      <h2 class="section-title">✦ MOST POPULAR</h2>
+      <div class="featured-grid">
+
+        <div class="featured-card">
+          <span class="card-badge">★ Destaque</span>
+          <span class="card-rating">⭐ 9.2</span>
+          <img
+            src="https://via.placeholder.com/400x200/1a1a2e/7c3aed?text=Projeto+1"
+            alt="Projeto 1"
+            class="card-image"
+            onerror="this.style.display='none'"
+          />
+          <div class="card-info">
+            <span class="card-tag">Design · UI/UX</span>
+            <h3>Identidade Visual</h3>
+            <p>Projeto de branding completo para comunidade no Discord.</p>
           </div>
         </div>
 
-        <div class="about-image">
-          <div class="gear-avatar-big">
-            <img
-              src="https://www.image2url.com/r2/default/images/1787348097348-4f16ed78-8920-4252-858f-cc2cd3f620f1.png"
-              alt="Yezzy Arte"
-              onerror="this.src='https://via.placeholder.com/400/1a1a1a/8b0000?text=Arte'"
-            />
+        <div class="featured-card">
+          <span class="card-badge">★ Destaque</span>
+          <span class="card-rating">⭐ 8.7</span>
+          <img
+            src="https://via.placeholder.com/400x200/1a1a2e/ec4899?text=Projeto+2"
+            alt="Projeto 2"
+            class="card-image"
+            onerror="this.style.display='none'"
+          />
+          <div class="card-info">
+            <span class="card-tag">Dev · Bot</span>
+            <h3>Bot de Moderação</h3>
+            <p>Bot completo com comandos de moderação, economia e diversão.</p>
           </div>
         </div>
+
+        <div class="featured-card">
+          <span class="card-badge">★ Novo</span>
+          <span class="card-rating">⭐ 8.4</span>
+          <img
+            src="https://via.placeholder.com/400x200/1a1a2e/3b82f6?text=Projeto+3"
+            alt="Projeto 3"
+            class="card-image"
+            onerror="this.style.display='none'"
+          />
+          <div class="card-info">
+            <span class="card-tag">Design · Banners</span>
+            <h3>Banners e Artes</h3>
+            <p>Criação de artes para redes sociais e eventos.</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- ===== SOBRE MIM (PESSOAL) ===== -->
-    <section id="personal">
-      <h2 class="section-title">Sobre Mim · Pessoal</h2>
-      <div class="personal-wrapper">
-        <div class="personal-text">
-          <p>
-            Oi! Eu sou a <strong>Sofia</strong>, mas pode me chamar de <strong>Yezzy ou Sofi</strong> se quiser.
-            Tenho 16 anos, moro em Portugal, mas sou Afro-Brasileira! <span class="blood-text">:3</span>
-          </p>
-          <p>
-            Quando não estou liderando comunidades ou programando, você vai me encontrar
-            mergulhada em <strong>fanarts</strong>, ouvindo música (sempre com fone!) ou
-            maratonando séries criminais. Ah, e sou viciada em rolinhos de salsicha, sempre voltando da escola compro um.
-          </p>
-          <p>
-            Minha maior motivação é ver as pessoas se conectando e se divertindo em
-            espaços que ajudei a construir. Acredito que uma comunidade bem cuidada
-            pode ser o lugar mais incrível do mundo.
-          </p>
-
-          <div class="personal-tags">
-            <span class="tag">🎨 Fanarts</span>
-            <span class="tag">◆ Gachiakuta</span>
-            <span class="tag">🎵 Música</span>
-            <span class="tag">📺 Séries</span>
-            <span class="tag">💻 Criadora</span>
-          </div>
-        </div>
-
-        <div class="personal-image">
+    <!-- ===== PERFIL DE PERSONAGEM (estilo Acti) ===== -->
+    <section id="profile">
+      <h2 class="section-title">✦ PERFIL</h2>
+      <div class="profile-wrapper">
+        <div class="profile-avatar-section">
           <img
             src="https://www.image2url.com/r2/default/images/1787348600131-957c697b-4e31-4d40-bd5e-f1b336dfbf5b.jpg"
-            alt="Sofia - Yezzy"
-            class="personal-foto"
-            onerror="this.src='https://via.placeholder.com/220/1a1a1a/8b0000?text=Sua+Foto'"
+            alt="Shantel"
+            class="profile-avatar"
+            onerror="this.src='https://via.placeholder.com/180/12121a/7c3aed?text=Shantel'"
           />
-        </div>
-      </div>
-    </section>
+          <div class="profile-name">SHANTEL</div>
+          <div class="profile-handle">@shantel · criadora</div>
 
-    <!-- ===== NAMORADO ===== -->
-    <section id="amizade">
-      <h2 class="section-title">Amizades</h2>
-      <div class="personal-wrapper love-wrapper">
-        <div class="personal-image">
-          <img
-            src="https://www.image2url.com/r2/default/images/1787347553382-89d94479-6e31-4dea-b912-be13814fab58.png"
-            alt="Rafa"
-            class="personal-foto"
-            onerror="this.src='https://via.placeholder.com/220/1a1a1a/8b0000?text=Rafa'"
-          />
+          <div class="profile-status-grid">
+            <div class="profile-status-item">
+              <span class="emoji">🌸</span>
+              <span class="label">tierna</span>
+            </div>
+            <div class="profile-status-item">
+              <span class="emoji">🍜</span>
+              <span class="label">comiendo</span>
+            </div>
+            <div class="profile-status-item">
+              <span class="emoji">💻</span>
+              <span class="label">codando</span>
+            </div>
+          </div>
         </div>
-        <div class="personal-text">
+
+        <div class="profile-bio">
+          <h3>✦ Sobre</h3>
           <p>
-            Esse cantinho é pro <strong>Rafa</strong> — Você transforma meus dias simples em momentos incríveis só por estar por perto. Obrigado por ser meu porto seguro, meu melhor amigo e o amor da minha vida. Te amo infinitamente!
+            Sou a <strong>Shantel</strong>, criadora multifacetada que une design visual,
+            desenvolvimento de bots e gestão de comunidades. Tenho 16 anos, moro em Portugal
+            e sou apaixonada por criar espaços onde as pessoas se conectam.
           </p>
-          <div class="personal-tags">
-            <span class="tag">Dono da BML</span>
-            <span class="tag">Posse do Heavens</span>
+          <p>
+            Quando não estou codando, me encontro fazendo fanarts, ouvindo música ou
+            maratonando séries. <span style="color: var(--pink);">:3</span>
+          </p>
+
+          <div class="tags">
+            <span class="tag">🎨 Design</span>
+            <span class="tag">⚙️ Dev</span>
+            <span class="tag">👑 Gestão</span>
+            <span class="tag">🤖 Bots</span>
+            <span class="tag">🌸 Fanarts</span>
+          </div>
+
+          <div class="profile-actions">
+            <a href="#contact" class="btn-small primary">Contato →</a>
+            <a href="#projects" class="btn-small">Projetos</a>
+            <a href="#experience" class="btn-small">Staff</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== EXPERIÊNCIA ===== -->
+    <!-- ===== EXPERIÊNCIA (STAFF) ===== -->
     <section id="experience">
-      <h2 class="section-title">Comunidades · Staff</h2>
-      <div class="card-grid">
-        <div class="card">
-          <div class="info">
-            <h3>Turquia</h3>
-            <p class="tag">Sub Líder - Mov Call</p>
-            <p class="desc">Coordenação de equipes, estrutura organizacional e organização de MoVs.</p>
-          </div>
+      <h2 class="section-title">✦ STAFF · COMUNIDADES</h2>
+      <div class="exp-grid">
+        <div class="exp-card">
+          <h3>Turquia</h3>
+          <p class="exp-tag">Sub Líder · Mov Call</p>
+          <p>Coordenação de equipes, estrutura organizacional e organização de MoVs.</p>
         </div>
-        <div class="card">
-          <div class="info">
-            <h3>Pureza</h3>
-            <p class="tag">Eventos · Equipe Social · Mov Call</p>
-            <p class="desc">Criação de eventos, gestão de entrada de membros e manutenção do fluxo da comunidade.</p>
-          </div>
+        <div class="exp-card">
+          <h3>Pureza</h3>
+          <p class="exp-tag">Eventos · Equipe Social</p>
+          <p>Criação de eventos, gestão de entrada de membros e manutenção do fluxo da comunidade.</p>
         </div>
-        <div class="card">
-          <div class="info">
-            <h3>Cidadela da Hayley</h3>
-            <p class="tag">Aprendiz de Mod · Editora · Promotora</p>
-            <p class="desc">Moderação, edição de conteúdos e promoção do servidor.</p>
-          </div>
+        <div class="exp-card">
+          <h3>Cidadela da Hayley</h3>
+          <p class="exp-tag">Aprendiz de Mod · Editora</p>
+          <p>Moderação, edição de conteúdos e promoção do servidor.</p>
         </div>
-        <div class="card">
-          <div class="info">
-            <h3>Mazul</h3>
-            <p class="tag">Sub Owner · Dev · Promotora · Org de Equipe</p>
-            <p class="desc">Deveres de administração, organização de tarefas e bot Maker.</p>
-          </div>
+        <div class="exp-card">
+          <h3>Mazul</h3>
+          <p class="exp-tag">Sub Owner · Dev · Promotora</p>
+          <p>Deveres de administração, organização de tarefas e bot Maker.</p>
         </div>
-        <div class="card">
-          <div class="info">
-            <h3>aOrdem</h3>
-            <p class="tag">Mov Call / Chat · Passtime</p>
-            <p class="desc">Deveres de administração, organização de tarefas e bot Maker.</p>
-          </div>
+        <div class="exp-card">
+          <h3>aOrdem</h3>
+          <p class="exp-tag">Mov Call / Chat · Passtime</p>
+          <p>Deveres de administração, organização de tarefas e bot Maker.</p>
         </div>
       </div>
     </section>
 
     <!-- ===== SKILLS ===== -->
     <section id="skills">
-      <h2 class="section-title">Skills</h2>
+      <h2 class="section-title">✦ SKILLS</h2>
       <div class="skill-grid">
         <div class="skill-card">
           <span class="icon">🎨</span>
           <h3>Design</h3>
-          <p>Figma · Photoshop · Identidade Visual</p>
+          <p>Figma · Photoshop · UI/UX</p>
         </div>
         <div class="skill-card">
           <span class="icon">⚙️</span>
           <h3>Dev</h3>
-          <p>Python · JavaScript · HTML/CSS · Discord.js</p>
-        </div>
-        <div class="skill-card">
-          <span class="icon">👑</span>
-          <h3>Gestão</h3>
-          <p>Liderança · Eventos · Moderação</p>
+          <p>Python · JS · HTML/CSS</p>
         </div>
         <div class="skill-card">
           <span class="icon">🤖</span>
           <h3>Bots</h3>
-          <p>Discord.js · Python · Automação</p>
+          <p>Discord.js · Python</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ===== SERVIDORES ===== -->
-    <section id="servers">
-      <h2 class="section-title">Servidores da minha confiança :3</h2>
-      <p class="servers-intro">Conheça o servidor dos meus amigos!</p>
-      <div class="server-grid">
-        <div class="server-card">
-          <span class="server-badge">◆ Confiável</span>
-          <h3>heavens &lt;/&gt;</h3>
-          <p class="server-desc">Comunidade parceira, feita com muito carinho.</p>
-          <a href="https://discord.gg/8k6Nf2skW2" target="_blank" class="server-btn">Entrar no servidor →</a>
-        </div>
-        <div class="server-card">
-          <span class="server-badge">◆ Confiável</span>
-          <h3>BML</h3>
-          <p class="server-desc">BML — comunidade do meu esposo rs</p>
-          <a href="https://discord.gg/Fp3aNdYQQt" target="_blank" class="server-btn">Entrar no servidor →</a>
+        <div class="skill-card">
+          <span class="icon">👑</span>
+          <h3>Gestão</h3>
+          <p>Liderança · Eventos</p>
         </div>
       </div>
     </section>
 
     <!-- ===== CONTATO ===== -->
     <section id="contact">
-      <h2 class="section-title">Contato</h2>
+      <h2 class="section-title section-title-center">✦ CONTATO</h2>
       <div class="contact-links">
-        <a href="mailto:equipeyezzy@outlook.com" target="_blank">E-mail</a>
-        <a href="https://discord.com/users/1366621726611607553" target="_blank">Discord</a>
-        <a href="https://instagram.com/ireiperdoar" target="_blank">Instagram</a>
+        <a href="mailto:equipeyezzy@outlook.com" target="_blank">✉ Email</a>
+        <a href="https://discord.com/users/1366621726611607553" target="_blank">◆ Discord</a>
+        <a href="https://instagram.com/ireiperdoar" target="_blank">✦ Instagram</a>
       </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <div class="footer">
-      © 2026 Yezzy · Feito com ❤️ · ◆ Gachiakuta ◆
+      © 2026 SHANTEL · Feito com ❤️ · ✦ ANIME STYLE ✦
     </div>
 
   </div>
@@ -1106,17 +1074,16 @@
   <script>
     // ===== PARTÍCULAS =====
     const bgScene = document.getElementById('bgScene');
-    const particleCount = 40;
-    for (let i = 0; i < particleCount; i++) {
+    for (let i = 0; i < 45; i++) {
       const p = document.createElement('div');
       p.className = 'particle';
       p.style.left = Math.random() * 100 + '%';
       p.style.top = Math.random() * 100 + '%';
-      p.style.animationDuration = (12 + Math.random() * 18) + 's';
-      p.style.animationDelay = (Math.random() * 10) + 's';
-      p.style.width = (2 + Math.random() * 4) + 'px';
+      p.style.animationDuration = (10 + Math.random() * 20) + 's';
+      p.style.animationDelay = (Math.random() * 12) + 's';
+      p.style.width = (1 + Math.random() * 3) + 'px';
       p.style.height = p.style.width;
-      p.style.opacity = 0.1 + Math.random() * 0.15;
+      p.style.opacity = 0.05 + Math.random() * 0.15;
       bgScene.appendChild(p);
     }
 
@@ -1133,8 +1100,8 @@
     const statusColors = {
       online: '#57d68d',
       idle: '#faa61a',
-      dnd: '#8b0000',
-      offline: '#a89890'
+      dnd: '#ec4899',
+      offline: '#6a6280'
     };
 
     async function loadDiscordStatus() {
