@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Permanent+Marker&family=Rubik+Spray+Paint&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Permanent+Marker&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -31,7 +31,6 @@
       --blood: #8b0000;
       --blood-light: #b31b1b;
       --blood-glow: rgba(139, 0, 0, 0.35);
-      --spray: rgba(139, 0, 0, 0.06);
       --glass: rgba(20, 16, 14, 0.88);
       --glass-border: rgba(232, 224, 216, 0.06);
     }
@@ -45,16 +44,17 @@
       min-height: 100vh;
     }
 
+    /* ===== FONTES ===== */
     h1, h2, h3, .logo, .graffiti {
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Fredoka One', cursive;
       letter-spacing: 1px;
     }
 
-    .spray-font {
-      font-family: 'Rubik Spray Paint', cursive;
+    .marker-font {
+      font-family: 'Permanent Marker', cursive;
     }
 
-    /* ===== FUNDO COM TEXTURA DE PAREDE ===== */
+    /* ===== FUNDO ===== */
     .bg-scene {
       position: fixed;
       inset: 0;
@@ -73,7 +73,6 @@
         radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.03) 0%, transparent 40%);
     }
 
-    /* Textura de parede com CSS */
     .wall-texture {
       position: fixed;
       inset: 0;
@@ -97,7 +96,6 @@
         );
     }
 
-    /* Respingos de tinta */
     .splatter {
       position: fixed;
       border-radius: 50%;
@@ -134,7 +132,6 @@
       opacity: 0.05;
     }
 
-    /* ===== CORRENTES ===== */
     .chain {
       position: fixed;
       pointer-events: none;
@@ -193,8 +190,8 @@
       font-weight: 400;
       color: var(--text-primary);
       text-shadow: 0 0 30px var(--blood-glow);
-      font-family: 'Rubik Spray Paint', cursive;
-      letter-spacing: 4px;
+      font-family: 'Fredoka One', cursive;
+      letter-spacing: 2px;
     }
 
     .logo span {
@@ -226,7 +223,7 @@
       transition: color 0.3s, text-shadow 0.3s;
       letter-spacing: 2px;
       text-transform: uppercase;
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Fredoka One', cursive;
     }
 
     .navbar ul a:hover {
@@ -300,7 +297,7 @@
     .section-title {
       font-size: 32px;
       font-weight: 400;
-      font-family: 'Rubik Spray Paint', cursive;
+      font-family: 'Fredoka One', cursive;
       color: var(--text-primary);
       margin-bottom: 30px;
       position: relative;
@@ -357,9 +354,9 @@
     .hero h1 {
       font-size: 56px;
       font-weight: 400;
-      font-family: 'Rubik Spray Paint', cursive;
+      font-family: 'Fredoka One', cursive;
       color: var(--text-primary);
-      letter-spacing: 4px;
+      letter-spacing: 2px;
       text-shadow: 0 0 40px var(--blood-glow);
     }
 
@@ -399,7 +396,7 @@
       margin-top: 22px;
       transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
       box-shadow: 0 6px 24px var(--blood-glow);
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Fredoka One', cursive;
       letter-spacing: 2px;
       text-transform: uppercase;
       border: 1px solid rgba(255, 255, 255, 0.05);
@@ -464,7 +461,7 @@
       font-size: 11px;
       font-weight: 700;
       color: #fff;
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Fredoka One', cursive;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
@@ -480,7 +477,7 @@
       font-size: 14px;
       font-weight: 700;
       color: #fbbf24;
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Fredoka One', cursive;
     }
 
     .project-card .card-info {
@@ -491,7 +488,7 @@
       font-size: 20px;
       font-weight: 700;
       color: var(--text-primary);
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Fredoka One', cursive;
     }
 
     .project-card .card-info .card-tag {
@@ -509,7 +506,7 @@
       margin-top: 6px;
     }
 
-    /* ===== PERFIL GRAFFITI ===== */
+    /* ===== PERFIL ===== */
     .profile-wrapper {
       background: var(--glass);
       backdrop-filter: blur(18px);
@@ -545,7 +542,7 @@
     .profile-name {
       font-size: 32px;
       font-weight: 400;
-      font-family: 'Rubik Spray Paint', cursive;
+      font-family: 'Fredoka One', cursive;
       margin-top: 16px;
       color: var(--text-primary);
       letter-spacing: 2px;
@@ -601,7 +598,7 @@
     .profile-bio h3 {
       font-size: 18px;
       font-weight: 400;
-      font-family: 'Rubik Spray Paint', cursive;
+      font-family: 'Fredoka One', cursive;
       color: var(--text-primary);
       letter-spacing: 2px;
       margin-bottom: 12px;
@@ -652,7 +649,7 @@
       border-radius: 0;
       font-size: 11px;
       font-weight: 700;
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Fredoka One', cursive;
       letter-spacing: 1px;
       text-decoration: none;
       transition: all 0.3s;
@@ -708,7 +705,7 @@
       font-size: 18px;
       font-weight: 700;
       color: var(--text-primary);
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Fredoka One', cursive;
     }
 
     .exp-card .exp-tag {
@@ -757,7 +754,7 @@
     }
 
     .skill-card h3 {
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Fredoka One', cursive;
       font-size: 16px;
       font-weight: 400;
       color: var(--blood-light);
@@ -788,7 +785,7 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 13px;
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Fredoka One', cursive;
       letter-spacing: 1px;
       transition: all 0.3s;
       text-transform: uppercase;
@@ -908,12 +905,10 @@
   <div class="bg-scene"></div>
   <div class="wall-texture"></div>
 
-  <!-- Respingos de tinta -->
   <div class="splatter splatter-1"></div>
   <div class="splatter splatter-2"></div>
   <div class="splatter splatter-3"></div>
 
-  <!-- Correntes -->
   <div class="chain chain-1"></div>
   <div class="chain chain-2"></div>
 
@@ -1161,7 +1156,6 @@
   </div>
 
   <script>
-    // ===== STATUS DISCORD =====
     const DISCORD_ID = '1366621726611607553';
 
     const statusLabels = {
