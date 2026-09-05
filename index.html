@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yezzy · Portfólio</title>
+  <title>Yezzy · Amo Empool · Gachiakuta</title>
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23b7d3ec'/%3E%3Ctext x='50%25' y='64%25' font-size='50' text-anchor='middle'%3E☁️%3C/text%3E%3C/svg%3E" />
+  <!-- Favicon: Olho da Amo -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231a1a1a'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23f5f0e8'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%238b0000'/%3E%3Ccircle cx='50' cy='50' r='6' fill='%231a1a1a'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 
   <style>
-
     * {
       margin: 0;
       padding: 0;
@@ -23,27 +23,25 @@
       scroll-behavior: smooth;
     }
 
-    /* ========== PALETA · CÉU / LAVANDA / ROSA ========== */
     :root {
-      --sky-1: #e8f1fb;
-      --sky-2: #cfe3f5;
-      --sky-3: #b7d3ec;
-      --lavender: #cdbfe8;
-      --lavender-deep: #a893d6;
-      --rose: #dba9c6;
-      --rose-deep: #c184a8;
-      --ink: #40506a;
-      --ink-soft: #78889f;
-      --ink-faint: #a3aec2;
-      --glass: rgba(255, 255, 255, 0.55);
-      --glass-strong: rgba(255, 255, 255, 0.72);
-      --glass-border: rgba(255, 255, 255, 0.65);
+      --bg-dark: #0d0d0d;
+      --bg-card: #1a1a1a;
+      --text-light: #f5f0e8;
+      --text-muted: #a89890;
+      --blood: #8b0000;
+      --blood-light: #b31b1b;
+      --blood-glow: rgba(139, 0, 0, 0.4);
+      --purple-dark: #2a1a3a;
+      --white-smoke: #f5f0e8;
+      --glass: rgba(26, 26, 26, 0.75);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --shadow-glow: 0 8px 32px rgba(139, 0, 0, 0.25);
     }
 
     body {
       font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
-      background: linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 45%, var(--sky-3) 100%);
-      color: var(--ink);
+      background: var(--bg-dark);
+      color: var(--text-light);
       line-height: 1.7;
       overflow-x: hidden;
       min-height: 100vh;
@@ -53,122 +51,77 @@
       font-family: 'Baloo 2', sans-serif;
     }
 
-    /* ========== CÉU · NUVENS E ESTRELAS FLUTUANTES ========== */
-    .sky-bg {
+    .blood-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--blood);
+    }
+
+    /* ===== FUNDO COM TEXTURA E PARTÍCULAS ===== */
+    .bg-scene {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
       overflow: hidden;
-    }
-
-    .cloud {
-      position: absolute;
-      background: #fff;
-      border-radius: 100px;
-      opacity: 0.55;
-      filter: blur(1px);
-      animation: drift 60s linear infinite;
-    }
-
-    .cloud::before,
-    .cloud::after {
-      content: '';
-      position: absolute;
-      background: #fff;
-      border-radius: 50%;
-    }
-
-    .cloud-1 { width: 180px; height: 50px; top: 8%;  left: -10%; animation-duration: 70s; }
-    .cloud-1::before { width: 90px; height: 90px; top: -45px; left: 20px; }
-    .cloud-1::after  { width: 70px; height: 70px; top: -32px; left: 100px; }
-
-    .cloud-2 { width: 140px; height: 40px; top: 22%; left: -15%; animation-duration: 50s; animation-delay: -15s; opacity: 0.4; }
-    .cloud-2::before { width: 70px; height: 70px; top: -34px; left: 14px; }
-    .cloud-2::after  { width: 55px; height: 55px; top: -24px; left: 76px; }
-
-    .cloud-3 { width: 220px; height: 60px; top: 55%; left: -20%; animation-duration: 85s; animation-delay: -30s; opacity: 0.35; }
-    .cloud-3::before { width: 100px; height: 100px; top: -50px; left: 30px; }
-    .cloud-3::after  { width: 80px; height: 80px; top: -38px; left: 130px; }
-
-    .cloud-4 { width: 160px; height: 45px; top: 75%; left: -15%; animation-duration: 65s; animation-delay: -5s; opacity: 0.45; }
-    .cloud-4::before { width: 80px; height: 80px; top: -40px; left: 18px; }
-    .cloud-4::after  { width: 60px; height: 60px; top: -28px; left: 92px; }
-
-    @keyframes drift {
-      from { transform: translateX(0); }
-      to   { transform: translateX(140vw); }
-    }
-
-    .star {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: #fff;
-      border-radius: 50%;
-      box-shadow: 0 0 6px 1px rgba(255,255,255,0.9);
-      animation: twinkle 4s ease-in-out infinite;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.15; transform: scale(0.8); }
-      50%      { opacity: 1;    transform: scale(1.3); }
-    }
-
-    /* ========== FLORES · CANTO DECORATIVO ========== */
-    .floral-corner {
-      position: fixed;
-      top: -40px;
-      left: -40px;
-      width: 260px;
-      height: 260px;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.8;
-    }
-
-    .rose {
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
       background:
-        radial-gradient(circle at 50% 50%, var(--rose) 0%, var(--rose) 30%, transparent 31%),
-        radial-gradient(circle at 35% 35%, var(--glass-strong) 0%, transparent 40%);
-      opacity: 0.85;
+        radial-gradient(ellipse at 20% 50%, rgba(139, 0, 0, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(42, 26, 58, 0.15) 0%, transparent 50%),
+        var(--bg-dark);
     }
 
-    .rose::before, .rose::after {
-      content: '';
+    /* Partículas flutuantes (poeira/cinzas) */
+    .particle {
       position: absolute;
-      inset: 0;
+      width: 3px;
+      height: 3px;
+      background: rgba(245, 240, 232, 0.15);
       border-radius: 50%;
-      border: 3px solid rgba(255,255,255,0.5);
-      transform: scale(0.62);
+      animation: float-particle linear infinite;
     }
 
-    .rose::after {
-      transform: scale(0.34) rotate(20deg);
-      border-color: rgba(255,255,255,0.7);
+    @keyframes float-particle {
+      0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) translateX(40px) scale(0.3); opacity: 0; }
     }
 
-    .rose-1 { top: 10px;  left: 90px; width: 90px; height: 90px; background-image: radial-gradient(circle at 50% 50%, var(--rose-deep) 0%, var(--rose-deep) 30%, transparent 31%), radial-gradient(circle at 35% 35%, var(--glass-strong) 0%, transparent 40%); }
-    .rose-2 { top: 60px;  left: 20px; }
-    .rose-3 { top: 90px;  left: 130px; width: 55px; height: 55px; opacity: 0.7; }
-    .rose-4 { top: 0px;   left: 0px;   width: 50px; height: 50px; opacity: 0.6; background-image: radial-gradient(circle at 50% 50%, var(--lavender) 0%, var(--lavender) 30%, transparent 31%), radial-gradient(circle at 35% 35%, var(--glass-strong) 0%, transparent 40%); }
-
-    .leaf {
-      position: absolute;
-      width: 44px;
-      height: 18px;
-      background: linear-gradient(120deg, #c9dfc4, #a9cf9e);
-      border-radius: 50% 50% 50% 0;
-      opacity: 0.7;
+    /* Correntes decorativas (CSS puro) */
+    .chain {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.12;
     }
 
-    .leaf-1 { top: 130px; left: 60px;  transform: rotate(35deg); }
-    .leaf-2 { top: 40px;  left: 160px; transform: rotate(-15deg); }
-    .leaf-3 { top: 150px; left: 150px; transform: rotate(70deg); }
+    .chain-1 {
+      top: 0;
+      right: 20px;
+      width: 2px;
+      height: 100vh;
+      background: repeating-linear-gradient(
+        to bottom,
+        var(--text-muted) 0px,
+        var(--text-muted) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+    }
+
+    .chain-2 {
+      bottom: 0;
+      left: 40px;
+      width: 40%;
+      height: 2px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--text-muted) 0px,
+        var(--text-muted) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+    }
 
     .container {
       max-width: 1100px;
@@ -178,20 +131,21 @@
       z-index: 1;
     }
 
-    /* ========== NAVBAR ========== */
+    /* ===== NAVBAR ===== */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       padding: 22px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .navbar .logo {
       font-size: 30px;
       font-weight: 600;
-      color: var(--lavender-deep);
-      text-shadow: 0 2px 12px rgba(168, 147, 214, 0.35);
+      color: var(--blood);
+      text-shadow: 0 0 20px var(--blood-glow);
     }
 
     .logo-cat {
@@ -228,7 +182,7 @@
 
     @keyframes cat-wag {
       0%, 100% { transform: rotate(0deg); }
-      50%      { transform: rotate(-10deg); }
+      50% { transform: rotate(-10deg); }
     }
 
     .navbar ul {
@@ -239,20 +193,21 @@
     }
 
     .navbar ul a {
-      color: var(--ink-soft);
+      color: var(--text-muted);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      transition: color 0.3s;
+      transition: color 0.3s, text-shadow 0.3s;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     .navbar ul a:hover {
-      color: var(--rose-deep);
+      color: var(--blood-light);
+      text-shadow: 0 0 12px var(--blood-glow);
     }
 
-
-
-    /* ========== STATUS DISCORD AO VIVO (Lanyard) ========== */
+    /* ===== STATUS DISCORD ===== */
     .hero-avatar-wrap {
       position: relative;
       display: inline-block;
@@ -265,9 +220,9 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      border: 4px solid #fff;
-      background: var(--ink-faint);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      border: 4px solid var(--bg-dark);
+      background: var(--text-muted);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
       transition: background 0.3s;
     }
 
@@ -282,7 +237,7 @@
       border: 1px solid var(--glass-border);
       border-radius: 40px;
       padding: 8px 18px 8px 8px;
-      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.15);
+      box-shadow: var(--shadow-glow);
       width: fit-content;
     }
 
@@ -291,7 +246,7 @@
       height: 34px;
       border-radius: 50%;
       object-fit: cover;
-      background: var(--sky-2);
+      background: var(--bg-card);
     }
 
     .discord-live-info {
@@ -303,20 +258,15 @@
     .discord-live-name {
       font-size: 13px;
       font-weight: 700;
-      color: var(--ink);
+      color: var(--text-light);
     }
 
     .discord-live-status {
       font-size: 11px;
-      color: var(--ink-soft);
+      color: var(--text-muted);
     }
 
-    /* ========== SEÇÃO NAMORADO (placeholder) ========== */
-    .love-wrapper .personal-image {
-      order: -1;
-    }
-
-    /* ========== SEÇÕES ========== */
+    /* ===== SEÇÕES ===== */
     section {
       padding: 56px 0;
     }
@@ -324,21 +274,21 @@
     .section-title {
       font-size: 30px;
       font-weight: 600;
-      color: var(--ink);
+      color: var(--text-light);
       margin-bottom: 30px;
       position: relative;
       padding-left: 20px;
     }
 
     .section-title::before {
-      content: '✦';
+      content: '◆';
       position: absolute;
       left: 0;
-      color: var(--rose-deep);
+      color: var(--blood);
       font-size: 18px;
     }
 
-    /* ========== HOME / HERO ========== */
+    /* ===== HOME / HERO ===== */
     .hero-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -357,34 +307,37 @@
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      border: 5px solid #fff;
-      box-shadow: 0 8px 40px rgba(140, 160, 200, 0.35), 0 0 0 8px rgba(255,255,255,0.35);
+      border: 3px solid var(--blood);
+      box-shadow: 0 0 40px var(--blood-glow), 0 0 80px rgba(139, 0, 0, 0.1);
       object-fit: cover;
-      background: var(--sky-2);
+      background: var(--bg-card);
+      filter: grayscale(0.2) contrast(1.1);
     }
 
     .hero h1 {
       font-size: 46px;
       font-weight: 600;
-      color: var(--ink);
+      color: var(--text-light);
     }
 
     .hero .subtitle {
       font-size: 18px;
-      color: var(--rose-deep);
+      color: var(--blood-light);
       font-weight: 600;
       margin: 6px 0 14px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
     }
 
     .hero p {
-      color: var(--ink-soft);
+      color: var(--text-muted);
       max-width: 480px;
       font-size: 15px;
     }
 
     .btn {
       display: inline-block;
-      background: linear-gradient(135deg, var(--lavender-deep), var(--rose-deep));
+      background: linear-gradient(135deg, var(--blood), var(--blood-light));
       color: #fff;
       padding: 13px 36px;
       border-radius: 40px;
@@ -393,15 +346,16 @@
       font-size: 14px;
       margin-top: 22px;
       transition: transform 0.2s, box-shadow 0.3s;
-      box-shadow: 0 6px 24px rgba(168, 147, 214, 0.4);
+      box-shadow: 0 6px 24px var(--blood-glow);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(193, 132, 168, 0.5);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 40px var(--blood-glow);
     }
 
-    /* ========== SOBRE (PROFISSIONAL) ========== */
+    /* ===== SOBRE ===== */
     .about-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -410,13 +364,13 @@
     }
 
     .about-text p {
-      color: var(--ink-soft);
+      color: var(--text-muted);
       font-size: 15px;
       margin-bottom: 16px;
     }
 
     .about-text strong {
-      color: var(--rose-deep);
+      color: var(--blood-light);
     }
 
     .stats {
@@ -434,19 +388,19 @@
       border-radius: 18px;
       padding: 16px;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.12);
+      box-shadow: var(--shadow-glow);
     }
 
     .stat-box .number {
       font-size: 24px;
       font-weight: 700;
       font-family: 'Baloo 2', sans-serif;
-      color: var(--lavender-deep);
+      color: var(--blood-light);
     }
 
     .stat-box .label {
       font-size: 11px;
-      color: var(--ink-faint);
+      color: var(--text-muted);
     }
 
     .philosophy-box {
@@ -457,22 +411,21 @@
       border-radius: 18px;
       padding: 16px 20px;
       margin-top: 12px;
-      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.12);
+      box-shadow: var(--shadow-glow);
     }
 
     .philosophy-box h3 {
-      color: var(--rose-deep);
+      color: var(--blood-light);
       font-size: 15px;
       font-weight: 600;
     }
 
     .philosophy-box p {
       font-size: 14px;
-      color: var(--ink-soft);
+      color: var(--text-muted);
       margin-top: 3px;
     }
 
-    /* ========== IMAGEM GRANDE ========== */
     .about-image {
       display: flex;
       justify-content: center;
@@ -494,12 +447,8 @@
       position: absolute;
       inset: 20px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,0.6), transparent 70%);
+      background: radial-gradient(circle, rgba(139, 0, 0, 0.15), transparent 70%);
       filter: blur(10px);
-    }
-
-    .gear-spin-big {
-      display: none;
     }
 
     .gear-avatar-big img {
@@ -508,10 +457,10 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 12px 40px rgba(140, 160, 200, 0.35));
+      filter: drop-shadow(0 12px 40px var(--blood-glow));
     }
 
-    /* ========== SOBRE MIM (PESSOAL) ========== */
+    /* ===== PESSOAL ===== */
     .personal-wrapper {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -523,17 +472,17 @@
       border-radius: 28px;
       padding: 44px;
       border: 1px solid var(--glass-border);
-      box-shadow: 0 8px 32px rgba(140, 160, 200, 0.15);
+      box-shadow: var(--shadow-glow);
     }
 
     .personal-text p {
-      color: var(--ink-soft);
+      color: var(--text-muted);
       font-size: 15px;
       margin-bottom: 16px;
     }
 
     .personal-text strong {
-      color: var(--rose-deep);
+      color: var(--blood-light);
     }
 
     .personal-tags {
@@ -544,13 +493,13 @@
     }
 
     .personal-tags .tag {
-      background: rgba(205, 191, 232, 0.3);
-      border: 1px solid rgba(205, 191, 232, 0.5);
+      background: rgba(139, 0, 0, 0.15);
+      border: 1px solid rgba(139, 0, 0, 0.3);
       padding: 6px 16px;
       border-radius: 30px;
       font-size: 13px;
       font-weight: 600;
-      color: var(--ink);
+      color: var(--text-light);
     }
 
     .personal-image {
@@ -565,38 +514,13 @@
       height: 220px;
       border-radius: 50%;
       object-fit: cover;
-      border: 5px solid #fff;
-      box-shadow: 0 8px 30px rgba(140, 160, 200, 0.3), 0 0 0 6px rgba(219, 169, 198, 0.25);
-      background: var(--sky-2);
+      border: 3px solid var(--blood);
+      box-shadow: 0 8px 30px var(--blood-glow), 0 0 0 4px rgba(139, 0, 0, 0.15);
+      background: var(--bg-card);
+      filter: grayscale(0.2) contrast(1.1);
     }
 
-    .personal-photo-placeholder {
-      background: rgba(255,255,255,0.4);
-      border: 2px dashed var(--rose);
-      border-radius: 50%;
-      width: 100%;
-      max-width: 220px;
-      height: 220px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: var(--ink-faint);
-    }
-
-    .personal-photo-placeholder span {
-      font-size: 48px;
-      margin-bottom: 8px;
-    }
-
-    .personal-photo-placeholder p {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--rose-deep);
-    }
-
-    /* ========== EXPERIÊNCIA ========== */
+    /* ===== CARDS (Experiência) ===== */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -611,12 +535,13 @@
       border-radius: 22px;
       overflow: hidden;
       transition: transform 0.25s, box-shadow 0.25s;
-      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.12);
+      box-shadow: var(--shadow-glow);
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 34px rgba(140, 160, 200, 0.25);
+      box-shadow: 0 12px 40px var(--blood-glow);
+      border-color: rgba(139, 0, 0, 0.3);
     }
 
     .card .info {
@@ -626,22 +551,22 @@
     .card .info h3 {
       font-size: 19px;
       font-weight: 600;
-      color: var(--ink);
+      color: var(--text-light);
     }
 
     .card .info .tag {
       font-size: 12px;
-      color: var(--rose-deep);
+      color: var(--blood-light);
       font-weight: 700;
     }
 
     .card .info .desc {
       font-size: 14px;
-      color: var(--ink-soft);
+      color: var(--text-muted);
       margin-top: 6px;
     }
 
-    /* ========== SKILLS ========== */
+    /* ===== SKILLS ===== */
     .skill-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -656,12 +581,13 @@
       border-radius: 20px;
       padding: 26px;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.12);
-      transition: transform 0.25s;
+      box-shadow: var(--shadow-glow);
+      transition: transform 0.25s, border-color 0.3s;
     }
 
     .skill-card:hover {
       transform: translateY(-4px);
+      border-color: rgba(139, 0, 0, 0.3);
     }
 
     .skill-card .icon {
@@ -671,20 +597,20 @@
     }
 
     .skill-card h3 {
-      color: var(--lavender-deep);
+      color: var(--blood-light);
       font-size: 16px;
       font-weight: 600;
     }
 
     .skill-card p {
-      color: var(--ink-soft);
+      color: var(--text-muted);
       font-size: 13px;
       margin-top: 4px;
     }
 
-    /* ========== SERVIDORES ========== */
+    /* ===== SERVIDORES ===== */
     .servers-intro {
-      color: var(--ink-soft);
+      color: var(--text-muted);
       margin-bottom: 24px;
       font-size: 14px;
     }
@@ -702,14 +628,19 @@
       border: 1px solid var(--glass-border);
       border-radius: 20px;
       padding: 22px;
-      box-shadow: 0 4px 20px rgba(140, 160, 200, 0.12);
+      box-shadow: var(--shadow-glow);
+      transition: border-color 0.3s;
+    }
+
+    .server-card:hover {
+      border-color: rgba(139, 0, 0, 0.3);
     }
 
     .server-badge {
       display: inline-block;
-      background: rgba(219, 169, 198, 0.25);
-      border: 1px solid rgba(219, 169, 198, 0.5);
-      color: var(--rose-deep);
+      background: rgba(139, 0, 0, 0.15);
+      border: 1px solid rgba(139, 0, 0, 0.3);
+      color: var(--blood-light);
       font-size: 12px;
       font-weight: 700;
       padding: 5px 14px;
@@ -720,16 +651,31 @@
     .server-card h3 {
       font-size: 18px;
       font-weight: 600;
-      color: var(--ink);
+      color: var(--text-light);
       margin-bottom: 6px;
     }
 
     .server-card p {
       font-size: 14px;
-      color: var(--ink-soft);
+      color: var(--text-muted);
     }
 
-    /* ========== CONTACT ========== */
+    .server-btn {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--blood-light);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+      transition: color 0.3s;
+    }
+
+    .server-btn:hover {
+      color: var(--text-light);
+      text-shadow: 0 0 12px var(--blood-glow);
+    }
+
+    /* ===== CONTATO ===== */
     .contact-links {
       display: flex;
       flex-wrap: wrap;
@@ -744,27 +690,29 @@
       border: 1px solid var(--glass-border);
       padding: 13px 34px;
       border-radius: 40px;
-      color: var(--ink);
+      color: var(--text-light);
       text-decoration: none;
       font-weight: 600;
       font-size: 14px;
-      transition: box-shadow 0.3s, transform 0.2s, color 0.3s;
+      transition: box-shadow 0.3s, transform 0.2s, border-color 0.3s;
     }
 
     .contact-links a:hover {
-      box-shadow: 0 8px 24px rgba(140, 160, 200, 0.25);
+      box-shadow: 0 8px 24px var(--blood-glow);
       transform: translateY(-2px);
-      color: var(--rose-deep);
+      border-color: rgba(139, 0, 0, 0.3);
+      color: var(--blood-light);
     }
 
     .footer {
       text-align: center;
       padding: 30px 0 24px;
-      color: var(--ink-faint);
+      color: var(--text-muted);
       font-size: 13px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    /* ========== RESPONSIVO ========== */
+    /* ===== RESPONSIVO ===== */
     @media (max-width: 768px) {
       .hero-wrapper {
         grid-template-columns: 1fr;
@@ -804,8 +752,7 @@
         justify-content: center;
       }
 
-      .personal-foto,
-      .personal-photo-placeholder {
+      .personal-foto {
         max-width: 180px;
         height: 180px;
       }
@@ -828,9 +775,8 @@
         font-size: 32px;
       }
 
-      .floral-corner {
-        width: 160px;
-        height: 160px;
+      .chain-1, .chain-2 {
+        display: none;
       }
     }
 
@@ -853,38 +799,21 @@
         padding: 0 16px;
       }
 
-      .personal-foto,
-      .personal-photo-placeholder {
+      .personal-foto {
         max-width: 150px;
         height: 150px;
-      }
-
-      .floral-corner {
-        display: none;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== CÉU DE FUNDO: NUVENS + ESTRELAS ===== -->
-  <div class="sky-bg" id="skyBg">
-    <div class="cloud cloud-1"></div>
-    <div class="cloud cloud-2"></div>
-    <div class="cloud cloud-3"></div>
-    <div class="cloud cloud-4"></div>
-  </div>
+  <!-- ===== FUNDO ===== -->
+  <div class="bg-scene" id="bgScene"></div>
 
-  <!-- ===== FLORES NO CANTO ===== -->
-  <div class="floral-corner">
-    <div class="rose rose-1"></div>
-    <div class="rose rose-2"></div>
-    <div class="rose rose-3"></div>
-    <div class="rose rose-4"></div>
-    <div class="leaf leaf-1"></div>
-    <div class="leaf leaf-2"></div>
-    <div class="leaf leaf-3"></div>
-  </div>
+  <!-- ===== CORRENTES ===== -->
+  <div class="chain chain-1"></div>
+  <div class="chain chain-2"></div>
 
   <!-- ===== CONTEÚDO ===== -->
   <div class="container">
@@ -893,32 +822,25 @@
     <nav class="navbar">
       <span class="logo logo-cat" aria-label="Yezzy">
         <svg viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
-          <!-- rabo -->
-          <path class="cat-tail" d="M 78 55 Q 95 50 90 30 Q 88 20 78 22" fill="none" stroke="#a893d6" stroke-width="6" stroke-linecap="round"/>
-          <!-- corpo/cabeça -->
-          <ellipse cx="42" cy="42" rx="26" ry="22" fill="#cdbfe8"/>
-          <!-- orelhas -->
-          <path d="M 22 26 L 16 8 L 34 20 Z" fill="#cdbfe8"/>
-          <path d="M 62 26 L 68 8 L 50 20 Z" fill="#cdbfe8"/>
-          <path d="M 24 22 L 21 12 L 30 19 Z" fill="#dba9c6"/>
-          <path d="M 60 22 L 63 12 L 54 19 Z" fill="#dba9c6"/>
-          <!-- olhos -->
-          <ellipse class="cat-eye" cx="33" cy="40" rx="4" ry="5" fill="#40506a"/>
-          <ellipse class="cat-eye" cx="51" cy="40" rx="4" ry="5" fill="#40506a"/>
-          <!-- focinho -->
-          <path d="M 42 47 L 39 50 L 45 50 Z" fill="#dba9c6"/>
-          <!-- bigodes -->
-          <line x1="12" y1="44" x2="26" y2="42" stroke="#a893d6" stroke-width="1.5"/>
-          <line x1="12" y1="50" x2="26" y2="48" stroke="#a893d6" stroke-width="1.5"/>
-          <line x1="58" y1="42" x2="72" y2="44" stroke="#a893d6" stroke-width="1.5"/>
-          <line x1="58" y1="48" x2="72" y2="50" stroke="#a893d6" stroke-width="1.5"/>
+          <path class="cat-tail" d="M 78 55 Q 95 50 90 30 Q 88 20 78 22" fill="none" stroke="#8b0000" stroke-width="6" stroke-linecap="round"/>
+          <ellipse cx="42" cy="42" rx="26" ry="22" fill="#2a1a3a"/>
+          <path d="M 22 26 L 16 8 L 34 20 Z" fill="#2a1a3a"/>
+          <path d="M 62 26 L 68 8 L 50 20 Z" fill="#2a1a3a"/>
+          <path d="M 24 22 L 21 12 L 30 19 Z" fill="#8b0000"/>
+          <path d="M 60 22 L 63 12 L 54 19 Z" fill="#8b0000"/>
+          <ellipse class="cat-eye" cx="33" cy="40" rx="4" ry="5" fill="#f5f0e8"/>
+          <ellipse class="cat-eye" cx="51" cy="40" rx="4" ry="5" fill="#f5f0e8"/>
+          <path d="M 42 47 L 39 50 L 45 50 Z" fill="#8b0000"/>
+          <line x1="12" y1="44" x2="26" y2="42" stroke="#8b0000" stroke-width="1.5"/>
+          <line x1="12" y1="50" x2="26" y2="48" stroke="#8b0000" stroke-width="1.5"/>
+          <line x1="58" y1="42" x2="72" y2="44" stroke="#8b0000" stroke-width="1.5"/>
+          <line x1="58" y1="48" x2="72" y2="50" stroke="#8b0000" stroke-width="1.5"/>
         </svg>
       </span>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">Sobre</a></li>
         <li><a href="#personal">Pessoal</a></li>
-        <li><a href="#amizades">Amizades</a></li>
         <li><a href="#experience">Experiência</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#servers">Servidores</a></li>
@@ -931,10 +853,11 @@
       <div class="hero-wrapper">
         <div class="hero">
           <h1>Yezzy</h1>
-          <p class="subtitle">Design · Dev · Community Manager</p>
+          <p class="subtitle">"Assim como Amo Empool, transformo caos em arte"</p>
           <p>
             Crio identidades visuais, desenvolvo bots e organizo comunidades
             para transformar servidores em ecossistemas vibrantes e funcionais.
+            <span class="blood-text">◆</span> Design · Dev · Community Manager
           </p>
           <a href="#contact" class="btn">Vamos conversar →</a>
         </div>
@@ -944,7 +867,7 @@
               src="https://www.image2url.com/r2/default/images/1787348263074-d4961ac6-d5d0-4147-9469-458ec70fa1ff.jpg"
               alt="Yezzy"
               class="hero-avatar"
-              onerror="this.src='https://via.placeholder.com/200/cfe3f5/40506a?text=Yezzy'"
+              onerror="this.src='https://via.placeholder.com/200/1a1a1a/8b0000?text=Yezzy'"
             />
             <span class="status-dot" id="statusDot" title="Status no Discord"></span>
           </div>
@@ -1003,7 +926,7 @@
             <img
               src="https://www.image2url.com/r2/default/images/1787348097348-4f16ed78-8920-4252-858f-cc2cd3f620f1.png"
               alt="Yezzy Arte"
-              onerror="this.src='https://via.placeholder.com/400/cfe3f5/40506a?text=Arte'"
+              onerror="this.src='https://via.placeholder.com/400/1a1a1a/8b0000?text=Arte'"
             />
           </div>
         </div>
@@ -1017,7 +940,7 @@
         <div class="personal-text">
           <p>
             Oi! Eu sou a <strong>Sofia</strong>, mas pode me chamar de <strong>Yezzy ou Sofi</strong> se quiser.
-            Tenho 16 anos, moro em Portugal, mas sou Afro-Brasileira!:3
+            Tenho 16 anos, moro em Portugal, mas sou Afro-Brasileira! <span class="blood-text">:3</span>
           </p>
           <p>
             Quando não estou liderando comunidades ou programando, você vai me encontrar
@@ -1032,26 +955,25 @@
 
           <div class="personal-tags">
             <span class="tag">🎨 Fanarts</span>
-            <span class="tag">☕ Café</span>
+            <span class="tag">◆ Gachiakuta</span>
             <span class="tag">🎵 Música</span>
             <span class="tag">📺 Séries</span>
             <span class="tag">💻 Criadora</span>
           </div>
         </div>
 
-        <!-- Lado direito: SUA FOTO -->
         <div class="personal-image">
           <img
             src="https://www.image2url.com/r2/default/images/1787348600131-957c697b-4e31-4d40-bd5e-f1b336dfbf5b.jpg"
             alt="Sofia - Yezzy"
             class="personal-foto"
-            onerror="this.src='https://via.placeholder.com/220/cfe3f5/40506a?text=Sua+Foto'"
+            onerror="this.src='https://via.placeholder.com/220/1a1a1a/8b0000?text=Sua+Foto'"
           />
         </div>
       </div>
     </section>
 
-    <!-- ===== NAMORADO (placeholder — troque foto e texto quando quiser) ===== -->
+    <!-- ===== NAMORADO ===== -->
     <section id="amizade">
       <h2 class="section-title">Amizades</h2>
       <div class="personal-wrapper love-wrapper">
@@ -1060,7 +982,7 @@
             src="https://www.image2url.com/r2/default/images/1787347553382-89d94479-6e31-4dea-b912-be13814fab58.png"
             alt="Rafa"
             class="personal-foto"
-            onerror="this.src='https://via.placeholder.com/220/cfe3f5/40506a?text=Rafa'"
+            onerror="this.src='https://via.placeholder.com/220/1a1a1a/8b0000?text=Rafa'"
           />
         </div>
         <div class="personal-text">
@@ -1107,12 +1029,13 @@
             <p class="desc">Deveres de administração, organização de tarefas e bot Maker.</p>
           </div>
         </div>
-          <div class="card">
+        <div class="card">
           <div class="info">
             <h3>aOrdem</h3>
             <p class="tag">Mov Call / Chat · Passtime</p>
             <p class="desc">Deveres de administração, organização de tarefas e bot Maker.</p>
           </div>
+        </div>
       </div>
     </section>
 
@@ -1123,17 +1046,22 @@
         <div class="skill-card">
           <span class="icon">🎨</span>
           <h3>Design</h3>
-          <p>Identidade Visual, Banners, UI/UX</p>
+          <p>Figma · Photoshop · Identidade Visual</p>
         </div>
         <div class="skill-card">
           <span class="icon">⚙️</span>
           <h3>Dev</h3>
-          <p>Python, JavaScript, HTML, CSS, C++, Java, TypeScript</p>
+          <p>Python · JavaScript · HTML/CSS · Discord.js</p>
         </div>
         <div class="skill-card">
           <span class="icon">👑</span>
           <h3>Gestão</h3>
-          <p>Liderança, Eventos, Moderação</p>
+          <p>Liderança · Eventos · Moderação</p>
+        </div>
+        <div class="skill-card">
+          <span class="icon">🤖</span>
+          <h3>Bots</h3>
+          <p>Discord.js · Python · Automação</p>
         </div>
       </div>
     </section>
@@ -1144,20 +1072,21 @@
       <p class="servers-intro">Conheça o servidor dos meus amigos!</p>
       <div class="server-grid">
         <div class="server-card">
-          <span class="server-badge">𓍢ִ໋🌷͙֒ Confiável</span>
+          <span class="server-badge">◆ Confiável</span>
           <h3>heavens &lt;/&gt;</h3>
           <p class="server-desc">Comunidade parceira, feita com muito carinho.</p>
           <a href="https://discord.gg/8k6Nf2skW2" target="_blank" class="server-btn">Entrar no servidor →</a>
         </div>
         <div class="server-card">
-          <span class="server-badge">𓍢ִ໋🌷͙֒ Confiável</span>
+          <span class="server-badge">◆ Confiável</span>
           <h3>BML</h3>
-          <p class="server-desc">BML— comunidade do meu esposo rs</p>
+          <p class="server-desc">BML — comunidade do meu esposo rs</p>
           <a href="https://discord.gg/Fp3aNdYQQt" target="_blank" class="server-btn">Entrar no servidor →</a>
         </div>
       </div>
     </section>
-    <!-- ===== CONTACT ===== -->
+
+    <!-- ===== CONTATO ===== -->
     <section id="contact">
       <h2 class="section-title">Contato</h2>
       <div class="contact-links">
@@ -1169,28 +1098,29 @@
 
     <!-- ===== FOOTER ===== -->
     <div class="footer">
-      © 2026 Yezzy · Feito com ❤️
+      © 2026 Yezzy · Feito com ❤️ · ◆ Gachiakuta ◆
     </div>
 
   </div>
 
   <script>
-    // Gera estrelas piscando espalhadas pelo céu, só na metade superior
-    const skyBg = document.getElementById('skyBg');
-    const starCount = 35;
-    for (let i = 0; i < starCount; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      star.style.top = Math.random() * 70 + '%';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.animationDelay = (Math.random() * 4) + 's';
-      star.style.animationDuration = (3 + Math.random() * 3) + 's';
-      skyBg.appendChild(star);
+    // ===== PARTÍCULAS =====
+    const bgScene = document.getElementById('bgScene');
+    const particleCount = 40;
+    for (let i = 0; i < particleCount; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.top = Math.random() * 100 + '%';
+      p.style.animationDuration = (12 + Math.random() * 18) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      p.style.width = (2 + Math.random() * 4) + 'px';
+      p.style.height = p.style.width;
+      p.style.opacity = 0.1 + Math.random() * 0.15;
+      bgScene.appendChild(p);
     }
 
-    // ===== STATUS DISCORD AO VIVO (Lanyard) =====
-    // 1. Troque abaixo pelo SEU ID do Discord (número, ative o Modo Desenvolvedor pra copiar)
-    // 2. Entre em discord.gg/lanyard com essa conta — sem isso o status não aparece
+    // ===== STATUS DISCORD =====
     const DISCORD_ID = '1366621726611607553';
 
     const statusLabels = {
@@ -1203,8 +1133,8 @@
     const statusColors = {
       online: '#57d68d',
       idle: '#faa61a',
-      dnd: '#f04747',
-      offline: '#a3aec2'
+      dnd: '#8b0000',
+      offline: '#a89890'
     };
 
     async function loadDiscordStatus() {
@@ -1243,7 +1173,7 @@
     }
 
     loadDiscordStatus();
-    setInterval(loadDiscordStatus, 60000); // atualiza a cada 1 min
+    setInterval(loadDiscordStatus, 60000);
   </script>
 
 </body>
